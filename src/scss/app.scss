@@ -1,0 +1,51 @@
+$color-gray-0: #2D2933;
+$color-gray-1: #211D27;
+$color-gray-2: #35323C;
+$color-gray-3: #191322;
+$color-white: #fff;
+$color-purple: #e462ff;
+
+$background-color: $color-gray-0;
+
+$card-list--header-bg: $color-gray-1;
+$card-list--header-color: $color-white;
+$card-list--footer-bg: $color-gray-1;
+$card-list--footer-color: $color-white;
+
+$card--border: 1px dotted #0005;
+$card--text-color: $color-white;
+$card--bg: $color-gray-2;
+$card--hover-bg: $color-gray-3;
+$card--title-color: $color-white;
+$card--subtitle-color: rgba($color-white, .6);
+$card--description-color: rgba($color-white, .6);
+$card--property-label-color: rgba($color-white, .6);
+$card--property-value-color: $color-white;
+$card--button-hover-bg: $color-gray-1;
+$card--button-bg: transparent;
+$card--button-color: $color-white;
+$card--inactive-opacity: .4;
+
+$header--bg: $color-gray-1;
+$header--logout-color: $color-purple;
+$header--text-color: $color-white;
+
+$menu--bg: $color-gray-1;
+$menu--tree-marker: $color-gray-0;
+$menu--item-color: #fff9;
+$menu--item-hover-bg: rgba($color-white, .05);
+$menu--item-icon-color: rgba($color-white, .3);
+$menu--group-color: $color-white;
+$menu--group-icon-color: rgba($color-white, .3);
+$menu--group-marker-color: rgba($color-white, .2);
+
+* { box-sizing: border-box;}
+
+*:not(.fa-classic, .fa-light, .fa-regular, .fa-solid, .fa-duotone, .fa-thin, .fa-brands, .fal, .far, .fas, .fat, .fab) {
+	font-family: "Baloo Chettan 2 Variable", sans-serif;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px;}
+::-webkit-scrollbar-track { padding-left: 2px;background: transparent;}
+::-webkit-scrollbar-thumb { background: #fff2; border-radius: 4px;}
+::-webkit-scrollbar-corner {display: none}

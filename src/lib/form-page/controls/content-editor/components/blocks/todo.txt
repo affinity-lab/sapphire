@@ -1,0 +1,32 @@
+TODO:
+
+Audio
+Countdown
+FAQ
+Code
+Divider
+Accordion
+Calendar
+Notification
+Timeline
+Weather
+Flip Card
+Playlist?
+Table of contents
+
+DONE:
+
+Data table
+Event
+File
+Gallery
+Graph
+Header
+Image
+Location
+Rich Text
+Text
+Usercard
+Video
+Visual Table
+Quote

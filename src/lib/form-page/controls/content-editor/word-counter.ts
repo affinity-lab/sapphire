@@ -1,0 +1,1 @@
+export let wordCounter: (text: string) => number = (text: string) => (text.match(/\b\w+\b/g) || []).length

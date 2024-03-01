@@ -1,0 +1,78 @@
+@import "../../lib/app.scss";
+
+$form--bg: $color-gray-2;
+$form--text-color: white;
+$form--input-color: white;
+$form--input-border-color: #777;
+$form--input-bg: $color-gray-2;
+$form--hover-bg: $card--hover-bg;
+$href-color: dodgerblue;
+
+
+a {
+  color: $href-color;
+}
+
+input, select, textarea {
+  flex-grow: 1;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background-color: $form--input-bg;
+  color: $form--input-color;
+  border: none;
+  box-sizing: border-box;
+  outline: none;
+}
+select:invalid {
+  color: gray!important;
+}
+option {
+  color: white;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="color"] {
+  padding: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 16px;
+  border: none;
+}
+
+input[type="color"]::-moz-color-swatch {
+  border-radius: 16px;
+  border: none;
+}
+
+
+.row {
+  flex-direction: row;
+}
+
+.column {
+  flex-direction: column;
+}
+
+input[type="number"] {
+  text-align: right;
+  font-family: "Lucida Console", Courier, monospace !important;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
