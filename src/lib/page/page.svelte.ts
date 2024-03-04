@@ -1,14 +1,8 @@
 import type {SvelteComponent} from "svelte";
 import {Icon} from "../common-ui/icon.js";
 
-export interface PageInterface {
-	id: string
-	label: string
-	component: typeof SvelteComponent,
-	icon?: Icon
-}
 
-export abstract class Page implements PageInterface {
+export abstract class Page {
 	static pageId: string;
 	public label = $state("");
 	public icon = $state(Icon.light("question"));

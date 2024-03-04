@@ -6,9 +6,10 @@ import type {Section} from "./section.js";
 import {proceed} from "../common-ui/confirm/proceed.svelte.js";
 import type {FormApiInterface, FormData} from "./types.js";
 import toastHandler from "$lib/common-ui/toast/toast-handler.svelte.js";
+import type {SvelteComponent} from "svelte";
 
 export abstract class FormPage extends Page {
-	component = SC_FormPage;
+	component: typeof SvelteComponent = SC_FormPage;
 	item: FormData = $state({id: ""});
 	public itemId: number | null = $state(null);
 	abstract get api(): FormApiInterface

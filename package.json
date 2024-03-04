@@ -1,6 +1,6 @@
 {
 	"name": "@affinity-lab/sapphire",
-	"version": "0.0.10",
+	"version": "0.0.17",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -9,13 +9,7 @@
 		"prepublishOnly": "npm run package",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"pub": "npm version patch && npm publish --access public"
-	},
-	"exports": {
-		".": {
-			"types": "./dist/index.d.ts",
-			"svelte": "./dist/index.js"
-		}
+		"pub": "npm --no-git-tag-version version patch && npm publish --access public"
 	},
 	"files": [
 		"dist",
