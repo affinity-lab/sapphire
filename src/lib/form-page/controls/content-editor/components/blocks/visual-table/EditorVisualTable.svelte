@@ -1,5 +1,4 @@
 <script lang="ts">
-    import * as bulmaToast from "bulma-toast";
     import autosize from 'svelte-autosize';
     import DefaultEditorComponent
         from "$lib/form-page/controls/content-editor/components/blocks/DefaultEditorComponent.svelte";
@@ -69,8 +68,6 @@
         } else if (getCell(...c2) && c1[1] == c2[1] && getCell(...c1).height === getCell(...c2).height) {
             getCell(...c1).width += getCell(...c2).width;
             removeCell(...c2)
-        } else {
-            bulmaToast.toast({message: "You can't do that!", type: "is-danger"})
         }
         data.cells = data.cells;
         change();

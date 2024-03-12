@@ -2,10 +2,11 @@ import {Popup} from "../popup/popup.svelte.js";
 import type {Icon} from "../common-ui/icon.js";
 import FileViewer from "./AttachmentDetailsPopup.svelte";
 import type {Attachment, MetaField} from "./types.js";
+import type {SvelteComponent} from "svelte";
 
 export class AttachmentDetailsPopup extends Popup {
     icon: Icon
-    component = FileViewer;
+    component: typeof SvelteComponent = FileViewer;
 
     beforeClose: () => Promise<boolean> = async () => {
         await this.loadData();

@@ -26,6 +26,7 @@ export * from "./tag-manager/tag-manager.svelte.js";
 
 export * from "./form-page/form-page.svelte.js";
 export * from "./form-page/controls/controls.js";
+export {default as Control} from "./form-page/controls/Control.svelte";
 export * from "./form-page/section.js";
 
 export * from "./lib/event.js";
@@ -44,3 +45,6 @@ export {default as ButtonComponent} from "./common-ui/button/ButtonComponent.sve
 export * from "./common-ui/toast/toast-handler.svelte.js";
 export {default as Table} from "./common-ui/table/Table.svelte";
 export * from "./common-ui/confirm/proceed.svelte.js";
+
+export * from "./attachment/attachment-popup.js";
+export * from "./attachment/attachment-details-popup.js";

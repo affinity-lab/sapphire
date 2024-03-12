@@ -2,7 +2,6 @@
     import {marked} from "marked";
     import {flip} from "svelte/animate";
     import {createEvent} from "ics";
-    import * as bulmaToast from "bulma-toast";
 
     let {data, preview} = $props();
 
@@ -34,7 +33,6 @@
             createEvent(event, (error, value) => {
                 if (error) {
                     reject(error);
-                    bulmaToast.toast({message: "The event is not ready to be saved. Make sure to fill the form!", type: "is-danger"})
                 }
                 resolve(new File([value], "event.ics", { type: 'plain/text' }))
             })

@@ -2,7 +2,7 @@ import type {FormApiInterface} from "./types.js";
 import type {OptionApi} from "$lib/form-page/controls/controls.js";
 
 export class FormApiBlitz implements FormApiInterface {
-	constructor(protected endpoint: string, private authCheck: (res: Response) => Promise<Response>) {
+	constructor(protected endpoint: string, protected authCheck: (res: Response) => Promise<Response>) {
 	}
 
 	async get(id: number | null, values?: Record<string, any>): Promise<any> {
