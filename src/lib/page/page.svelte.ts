@@ -8,6 +8,7 @@ export abstract class Page {
 	public icon = $state(Icon.light("question"));
 	abstract get component(): typeof SvelteComponent;
 	public changed: boolean = $state(false);
+	public fixedHeight: boolean = false;
 
 	set pageId(id: string) {
 		Object.defineProperty(this.constructor, "pageId", {value: id});

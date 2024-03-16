@@ -10,10 +10,17 @@ export type EventCallback = (e: Event) => void;
 class EventEmitter {
 	protected subscriptions: Record<number, Array<EventCallback>> = {};
 
-	subscribe(type: number, callback: EventCallback) {
+	subscribe(type: number | number[], callback: EventCallback) {
+		if (Array.isArray(type)) {
+			type.forEach(x => this._subscribe(x, callback))
+		} else this._subscribe(type, callback);
+	}
+
+	protected _subscribe(type: number, callback: EventCallback) {
 		if (!this.subscriptions.hasOwnProperty(type)) this.subscriptions[type] = [];
 		this.subscriptions[type].push(callback);
 	}
+
 
 	emit(e: number, data?: any): void;
 	emit(e: Event): void;

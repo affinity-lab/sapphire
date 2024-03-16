@@ -1,6 +1,6 @@
 {
 	"name": "@affinity-lab/sapphire",
-	"version": "0.1.5",
+	"version": "0.1.9",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",

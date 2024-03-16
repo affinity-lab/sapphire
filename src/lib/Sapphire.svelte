@@ -11,11 +11,12 @@
 	import SC_Popups from "./popup/SC_Popups.svelte";
 	import Toast from "./common-ui/toast/Toast.svelte";
 
-	let {menu, brand, onload, logout}: {
+	let {menu, brand, onload, logout, hasUser = true}: {
 		menu: any,
 		brand: any,
 		onload: (pageHandler: PageHandler, listHandler: ListHandler) => void,
-		logout: () => void;
+		logout: () => void,
+		hasUser: boolean
 	} = $props();
 
 	onload(pageHandler, listHandler);
@@ -23,7 +24,7 @@
 
 <main>
 	<header>
-		<SC_Header {brand} logout={() => logout()}/>
+		<SC_Header {brand} logout={() => logout()} {hasUser}/>
 	</header>
 	<section>
 		<div class="menu">
