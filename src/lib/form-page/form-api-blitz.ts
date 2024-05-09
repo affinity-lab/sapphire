@@ -1,4 +1,4 @@
-import type {FormApiInterface} from "./types.js";
+import type {ErrorObject, FormApiInterface} from "./types.js";
 import type {OptionApi} from "$lib/form-page/controls/controls.js";
 
 export class FormApiBlitz implements FormApiInterface {
@@ -17,7 +17,7 @@ export class FormApiBlitz implements FormApiInterface {
 			.then(res => res.json());
 	}
 
-	async save(id: number | null, item: Record<string, any>): Promise<number> {
+	async save(id: number | null, item: Record<string, any>): Promise<number | ErrorObject> {
 		return await fetch(
 			`${this.endpoint}.save`,
 			{

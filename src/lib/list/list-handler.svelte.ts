@@ -8,7 +8,7 @@ export class ListHandler {
 	setList(list: new() => AbstractList) {
 		let listItem: AbstractList | undefined = undefined;
 		for (let li of this.lists) {
-			if (li.name === list.name) {
+			if (li.constructor.name === list.name) {
 				listItem = li;
 			}
 		}
@@ -16,6 +16,8 @@ export class ListHandler {
 			listItem = new list();
 			this.lists = [...this.lists, listItem];
 		}
+
+
 		this.currentList = listItem;
 	}
 }

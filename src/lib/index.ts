@@ -3,6 +3,9 @@ export {default as Sapphire} from "./Sapphire.svelte";
 export * from "./endpoint/blitz-cmd-endpoint.js";
 export * from "./endpoint/blitz-file-endpoint.js";
 export * from "./endpoint/blitz-img-endpoint.js";
+export * from "./endpoint/awqrd-cmd-endpoint.js";
+export * from "./endpoint/awqrd-file-endpoint.js";
+export * from "./endpoint/awqrd-img-endpoint.js";
 
 export * from "./attachment/attachment-api-blitz.js";
 export * from "./attachment/types.js";
@@ -19,6 +22,8 @@ export * from "./page/page-handler.svelte.js";
 export * from "./page/page.svelte.js";
 
 export * from "./popup/popup-handler.svelte.js";
+export * from "./popup/popup.svelte.js";
+export {default as SC_Popup} from "./popup/SC_Popup.svelte";
 
 export * from "./tag-manager/tag-manager-popup.js";
 export * from "./tag-manager/tag-manager.svelte.js";

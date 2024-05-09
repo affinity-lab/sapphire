@@ -1,6 +1,7 @@
 import {Icon} from "../../common-ui/icon.js";
 import type {SvelteComponent} from "svelte";
 import type {OptionApi, Options} from "$lib/form-page/controls/controls.js";
+import type {ErrorArray} from "../types.js";
 
 
 export abstract class AbstractControl {
@@ -18,6 +19,16 @@ export abstract class AbstractControl {
             this.roles = roles;
         }
         return this;
+    }
+
+    setErrors (errorArray: ErrorArray) {
+        for (let error of errorArray) {
+            this.errors.push(error.message)
+        }
+    }
+
+    clearErrors () {
+        this.errors = [];
     }
 
     // error(type: string[]) {

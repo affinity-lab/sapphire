@@ -5,7 +5,7 @@
 </script>
 
 {#if userStore.hasRole(control.roles)}
-    <div class="container"
+    <div class="container bulma"
          class:row={control.layout==="row"}
          class:column={control.layout==="column"}
          class:force-row={control.layout==="forceRow"}
@@ -24,8 +24,6 @@
             </footer>
         </section>
     </div>
-
-
 {/if}
 
 <style lang="scss">
@@ -74,7 +72,6 @@
           margin-right: 8px;
         }
       }
-
     }
 
     section {

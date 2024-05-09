@@ -21,6 +21,7 @@ import {ContentEditor} from "$lib/form-page/controls/content-editor/content-edit
 export type Options = string[] | Record<string, any> | string
 export type OptionApi = (...args: any) => Options | Promise<Options>
 
+type Files = Record<string, any> | (()=> Record<string, any> | Promise<Record<string, any>>)
 
 export const controls = {
     "checkbox": (field: string, label: string, options: Options | OptionApi): CheckboxControl => new CheckboxControl(field, label, options),
@@ -41,7 +42,7 @@ export const controls = {
     "time": (field: string, label: string): TimeControl => new TimeControl(field, label),
     "yesNoSwitch": (field: string, label: string): YesNoSwitchControl => new YesNoSwitchControl(field, label),
     "link": (field: string, label: string, links: Link | Link[] | LinkGetter): LinkControl => new LinkControl(field, label, links),
-    "content": (field: string, label: string, blocks: Record<string, any>): ContentEditor => new ContentEditor(field, label, blocks, {})
+    "content": (field: string, label: string, blocks: Record<string, any>, files: Files): ContentEditor => new ContentEditor(field, label, blocks, files)
 }
 
 export default controls;

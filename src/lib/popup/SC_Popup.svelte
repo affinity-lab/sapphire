@@ -2,20 +2,22 @@
     import popupHandler from "./popup-handler.svelte.js";
     const {popup} = $props();
 
+    async function close (e) {
+        if (await popup.beforeClose()) popupHandler.close();
+        e.preventDefault();
+    }
+
 </script>
 
-<div class="popup-wrapper">
-    <div class="popup" class:content-size={popup.size==="content"} class:max-size={popup.size==="max"}>
+<div class="popup-wrapper" on:click={async (e)=>await close(e)}>
+    <div class="popup" on:click={(e)=>e.stopPropagation()} class:content-size={popup.size==="content"} class:max-size={popup.size==="max"}>
         <header>
                 <span>
                     {#if popup.icon}<i class="fa-fa fa-solid {popup.icon} icon"></i>{/if}
                     {popup.caption}
                 </span>
             <i class="fa-solid fa-xmark close"
-               on:click={async (e)=>{
-                       if (await popup.beforeClose()) popupHandler.close();
-                       e.preventDefault();
-                   }}
+               on:click={async (e)=>await close(e)}
             ></i>
         </header>
         <section class="popup-body">

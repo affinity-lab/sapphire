@@ -38,7 +38,8 @@
                             control={control}
                             bind:item={page.item}
                             onChange={()=>{
-                                page.onChange()
+                                page.onChange();
+                                control.clearErrors();
                             }}
                     />
                 {/each}

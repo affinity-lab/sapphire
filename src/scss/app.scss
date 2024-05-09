@@ -49,3 +49,7 @@ $menu--group-marker-color: rgba($color-white, .2);
 ::-webkit-scrollbar-track { padding-left: 2px;background: transparent;}
 ::-webkit-scrollbar-thumb { background: #fff2; border-radius: 4px;}
 ::-webkit-scrollbar-corner {display: none}
+
+.bulma {
+	@import "bulma/bulma.scss";
+}
