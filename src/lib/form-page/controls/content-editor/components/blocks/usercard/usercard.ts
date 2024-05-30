@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorUserCard from "./EditorUserCard.svelte";
 import RenderedUser from "./RenderedUser.svelte";
@@ -34,8 +33,8 @@ export default class Usercard implements BlockConfigInterface<EditorData, Option
             position: false
         }
     };
-    readonly editor: typeof SvelteComponent = EditorUserCard;
-    readonly renderer: typeof SvelteComponent = RenderedUser;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorUserCard;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedUser;
     readonly messages: Record<string, string> = {
         invalidId: "Id must be non-empty, and can only be a positive integer!",
         noField: "At least one field must be displayed!"

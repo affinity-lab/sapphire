@@ -2,7 +2,7 @@
     import {PasswordControl} from "./password.js";
     import Control from "../Control.svelte"
 
-    let {control, item, onChange}: { control: PasswordControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: PasswordControl, item: any, onChange: Function } = $props()
     let field = control.field;
     let visible = $state(true);
 
@@ -15,7 +15,7 @@
         <input type="text" autocomplete="current-password" bind:value={item[field]} on:change={onChange}>
     {/if}
     <div class="icon-container">
-        <i on:click={() => visible = !visible} class="fa-light" class:fa-eye={visible} class:fa-eye-slash={!visible}></i>
+        <i onclick={() => visible = !visible} class="fa-light" class:fa-eye={visible} class:fa-eye-slash={!visible}></i>
     </div>
 </Control>
 

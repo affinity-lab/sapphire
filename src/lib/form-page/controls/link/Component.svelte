@@ -4,7 +4,7 @@
     import ButtonComponent from "$lib/common-ui/button/ButtonComponent.svelte";
     import {Button} from "$lib/common-ui/button/button.svelte.js";
 
-    let {control, item, onChange}: {control: LinkControl, item: any, onChange: Function} = $props()
+    let {control, item = $bindable(), onChange}: {control: LinkControl, item: any, onChange: Function} = $props()
     let field = control.field;
 
 </script>

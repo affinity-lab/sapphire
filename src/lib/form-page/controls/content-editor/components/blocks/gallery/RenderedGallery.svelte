@@ -1,7 +1,6 @@
 <script lang="ts">
     import {flip} from 'svelte/animate';
-    import RenderedImage
-        from "$lib/form-page/controls/content-editor/components/blocks/image/RenderedImage.svelte";
+    import RenderedImage from "$lib/form-page/controls/content-editor/components/blocks/image/RenderedImage.svelte";
 
     let {data, preview} = $props();
 

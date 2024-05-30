@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorImage from "./EditorImage.svelte";
 import RenderedImage from "./RenderedImage.svelte";
@@ -28,8 +27,8 @@ export default class Image implements BlockConfigInterface<EditorData, Options> 
         alt: "",
         align: "justify"
     };
-    readonly editor: typeof SvelteComponent = EditorImage;
-    readonly renderer: typeof SvelteComponent = RenderedImage;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorImage;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedImage;
 
     readonly messages: Record<string, string> = {
         emptyUrl: "Field 'url' must not be empty!",

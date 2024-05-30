@@ -2,7 +2,7 @@
     import Control from "../Control.svelte"
     import type {DateTimeControl} from "$lib/form-page/controls/datetime/datetime.js";
 
-    let {control, item, onChange}: {control: DateTimeControl, item: any, onChange: Function} = $props()
+    let {control, item = $bindable(), onChange}: {control: DateTimeControl, item: any, onChange: Function} = $props()
     let field = control.field;
 
     const pad = (n: number) => n.toString().padStart(2, "0")
@@ -15,7 +15,7 @@
 </script>
 
 <Control {control}>
-    <input type="datetime-local" value={formatDate(item[field])} on:input={(e) => {
+    <input type="datetime-local" value={formatDate(item[field])} oninput={(e) => {
         item[field] = e.target.value;
     }} on:change={onChange}/>
 </Control>

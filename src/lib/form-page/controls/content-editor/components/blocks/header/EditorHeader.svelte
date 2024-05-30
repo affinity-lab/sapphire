@@ -24,7 +24,7 @@
 <DefaultEditorComponent {pageHandler} {index} bind:visible bind:valid bind:change>
     <input class="input is-small" type="text"
            bind:value={data.text}
-           on:input={change}
+           oninput={change}
     />
 
     <svelte:fragment slot="closed-text">{data.text}</svelte:fragment>

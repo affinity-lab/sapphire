@@ -1,8 +1,8 @@
 <script lang="ts">
     import {ColorControl} from "./color.js";
-   import Control from "../Control.svelte"
+    import Control from "../Control.svelte"
 
-    let {control, item, onChange}: {control: ColorControl, item: any, onChange: Function} = $props()
+    let {control, item = $bindable(), onChange}: {control: ColorControl, item: any, onChange: Function} = $props()
     let field = control.field;
 
 </script>

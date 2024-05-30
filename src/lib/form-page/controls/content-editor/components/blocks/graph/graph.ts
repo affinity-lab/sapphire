@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorGraph from "$lib/form-page/controls/content-editor/components/blocks/graph/EditorGraph.svelte";
 import RenderedGraph from "$lib/form-page/controls/content-editor/components/blocks/graph/RenderedGraph.svelte";
@@ -25,8 +24,8 @@ export default class Graph implements BlockConfigInterface<EditorData, Options> 
         headers: [""],
         lines: []
     };
-    readonly editor: typeof SvelteComponent = EditorGraph;
-    readonly renderer: typeof SvelteComponent = RenderedGraph;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorGraph;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedGraph;
     readonly messages: Record<string, string> = {
 
     }

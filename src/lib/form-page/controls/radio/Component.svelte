@@ -1,8 +1,8 @@
 <script lang="ts">
     import {RadioControl} from "./radio.js";
-   import Control from "../Control.svelte"
+    import Control from "../Control.svelte"
 
-    let {control, item, onChange}: { control: RadioControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: RadioControl, item: any, onChange: Function } = $props()
     let field = control.field;
     let name = control.field + Math.random();
 </script>

@@ -1,8 +1,8 @@
 <script lang="ts">
     import {TimeControl} from "./time.js";
-   import Control from "../Control.svelte"
+    import Control from "../Control.svelte"
 
-    let {control, item, onChange}: {control: TimeControl, item: any, onChange: Function} = $props()
+    let {control, item = $bindable(), onChange}: {control: TimeControl, item: any, onChange: Function} = $props()
     let field = control.field;
 
 

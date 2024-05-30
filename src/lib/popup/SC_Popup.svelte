@@ -1,31 +1,36 @@
-<script>
+<script lang="ts">
     import popupHandler from "./popup-handler.svelte.js";
-    const {popup} = $props();
+    import {Popup} from "$lib/popup/popup.svelte";
+    import type {Snippet} from "svelte";
 
-    async function close (e) {
+    const {popup, children, footer}: {popup: Popup, children: Snippet, footer?: Snippet} = $props();
+
+    async function close (e: MouseEvent) {
         if (await popup.beforeClose()) popupHandler.close();
         e.preventDefault();
     }
 
 </script>
 
-<div class="popup-wrapper" on:click={async (e)=>await close(e)}>
-    <div class="popup" on:click={(e)=>e.stopPropagation()} class:content-size={popup.size==="content"} class:max-size={popup.size==="max"}>
+<div class="popup-wrapper" onclick={async (e)=>await close(e)}>
+    <div class="popup" onclick={(e)=>e.stopPropagation()} class:content-size={popup.size==="content"} class:max-size={popup.size==="max"}>
         <header>
                 <span>
                     {#if popup.icon}<i class="fa-fa fa-solid {popup.icon} icon"></i>{/if}
                     {popup.caption}
                 </span>
             <i class="fa-solid fa-xmark close"
-               on:click={async (e)=>await close(e)}
+               onclick={async (e)=>await close(e)}
             ></i>
         </header>
         <section class="popup-body">
-            <slot />
+            {@render children()}
 
         </section>
         <footer>
-            <slot name="footer"></slot>
+            {#if footer}
+                {@render footer()}
+            {/if}
         </footer>
     </div>
 </div>

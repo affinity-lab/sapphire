@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorVideo from "$lib/form-page/controls/content-editor/components/blocks/video/EditorVideo.svelte";
 import RenderedVideo from "$lib/form-page/controls/content-editor/components/blocks/video/RenderedVideo.svelte";
@@ -23,8 +22,8 @@ export default class Video implements BlockConfigInterface<EditorData, Options> 
         videoId: "",
         startSecond: 0
     };
-    readonly editor: typeof SvelteComponent = EditorVideo;
-    readonly renderer: typeof SvelteComponent = RenderedVideo;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorVideo;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedVideo;
     readonly messages: Record<string, string> = {
 
     }

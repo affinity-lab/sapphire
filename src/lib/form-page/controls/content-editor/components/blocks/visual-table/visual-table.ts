@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorVisualTable from "./EditorVisualTable.svelte";
 import RenderedVisualTable from "./RenderedVisualTable.svelte";
@@ -32,8 +31,8 @@ export default class VisualTable implements BlockConfigInterface<EditorData, Opt
         width: 1,
         height: 1
     };
-    readonly editor: typeof SvelteComponent = EditorVisualTable;
-    readonly renderer: typeof SvelteComponent = RenderedVisualTable;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorVisualTable;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedVisualTable;
     readonly messages: Record<string, string> = {
         example_error: "This is an error message from config.valid! Text must be exactly 10 characters."
     }

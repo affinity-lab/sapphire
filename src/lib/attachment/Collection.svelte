@@ -4,7 +4,7 @@
     import {Button} from "../common-ui/button/button.svelte.js";
     import {Icon} from "../common-ui/icon.js";
     import fileSize from "file-size";
-    import type {Collection, Attachment} from "./types";
+    import type {Attachment, Collection} from "./types";
     import {AttachmentDetailsPopup} from "./attachment-details-popup";
 
     let {collection, api, loadData, label} = $props();
@@ -30,7 +30,6 @@
     }
 </script>
 
-
 <section>
     <h2>{label} <i>({collection.items.length}/{collection.rules.limit})</i></h2>
     <div class="file-container">
@@ -53,7 +52,7 @@
             </div>
         {/if}
         {#each collection.items as file, index (file.id)}
-            <div class="file" on:click={()=>{popupHandler.open(filePopupFactory(file, collection))}}>
+            <div class="file" onclick={()=>{popupHandler.open(filePopupFactory(file, collection))}}>
                 <div class="file-image">
                     {#if file.isImage}
                         <img src={file.imageUrl(144, 81)} alt="index">
@@ -75,7 +74,7 @@
                     })}/>
                 </div>
                 <div class="overlay">
-                    <button on:click={(e) => {
+                    <button onclick={(e) => {
                         e.stopPropagation();
                         if (index > 0) {
                             api.reorder(collection.name, file.name, index - 1).then(()=> {
@@ -84,7 +83,7 @@
                         }
                     }}
                     ><i class="fa-solid fa-chevron-left"></i></button>
-                    <button on:click={(e) => {
+                    <button onclick={(e) => {
                         e.stopPropagation();
                         if (index < collection.items.length - 1) {
                             api.reorder(collection.name, file.name, index + 1).then(()=> {

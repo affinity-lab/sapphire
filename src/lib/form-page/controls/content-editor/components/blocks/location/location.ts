@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorLocation from "./EditorLocation.svelte";
 import RenderedLocation from "./RenderedLocation.svelte";
@@ -24,8 +23,8 @@ export default class Location implements BlockConfigInterface<EditorData, Option
         long: "",
         lat: ""
     };
-    readonly editor: typeof SvelteComponent = EditorLocation;
-    readonly renderer: typeof SvelteComponent = RenderedLocation;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorLocation;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedLocation;
     readonly messages: Record<string, string> = {
 
     }

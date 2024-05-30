@@ -1,7 +1,6 @@
 import {get} from "svelte/store";
 import {read} from "./clipboard-handler";
-import type {CleanDataType} from "./components/page-handler.svelte";
-import type { PageHandler} from "./components/page-handler.svelte";
+import type {CleanDataType, PageHandler} from "./components/page-handler.svelte";
 
 export let selectedFile: File;
 

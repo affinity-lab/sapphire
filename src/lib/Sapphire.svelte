@@ -1,17 +1,17 @@
 <script lang="ts">
-	import "@fontsource-variable/baloo-chettan-2";
-	import SC_Header from "./header/SC_Header.svelte";
-	import SC_Menu from "./menu/SC_Menu.svelte";
-	import SC_Tabs from "./page/SC_PageTabs.svelte";
-	import pageHandler, {PageHandler} from "./page/page-handler.svelte.js";
-	import SC_Pages from "./page/SC_Pages.svelte";
-	import listHandler, {ListHandler} from "./list/list-handler.svelte";
-	import SC_Lists from "./list/SC_Lists.svelte";
-	import popupHandler from "./popup/popup-handler.svelte.js";
-	import SC_Popups from "./popup/SC_Popups.svelte";
-	import Toast from "./common-ui/toast/Toast.svelte";
+    import "@fontsource-variable/baloo-chettan-2";
+    import SC_Header from "./header/SC_Header.svelte";
+    import SC_Menu from "./menu/SC_Menu.svelte";
+    import SC_Tabs from "./page/SC_PageTabs.svelte";
+    import pageHandler, {PageHandler} from "./page/page-handler.svelte.js";
+    import SC_Pages from "./page/SC_Pages.svelte";
+    import listHandler, {ListHandler} from "./list/list-handler.svelte";
+    import SC_Lists from "./list/SC_Lists.svelte";
+    import popupHandler from "./popup/popup-handler.svelte.js";
+    import SC_Popups from "./popup/SC_Popups.svelte";
+    import Toast from "./common-ui/toast/Toast.svelte";
 
-	let {menu, brand, onload, logout, hasUser = true}: {
+    let {menu, brand, onload, logout, hasUser = true}: {
 		menu: any,
 		brand: any,
 		onload: (pageHandler: PageHandler, listHandler: ListHandler) => void,

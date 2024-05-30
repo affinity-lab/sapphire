@@ -9,8 +9,8 @@ export function proceed(text: string, onAccept: Function, onCancel: Function, ca
 }
 
 
-class ConfirmPopup extends Popup {
-    component = ConfirmComponent;
+export class ConfirmPopup extends Popup {
+    component: ConstructorOfATypedSvelteComponent = ConfirmComponent;
     icon = Icon.solid("question")
 
     buttons: Button[] = [

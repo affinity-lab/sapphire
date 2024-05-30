@@ -1,5 +1,5 @@
 <script lang="ts">
-	import listHandler from "./list-handler.svelte.js";
+    import listHandler from "./list-handler.svelte.js";
 </script>
 
 {#each listHandler.lists as list}

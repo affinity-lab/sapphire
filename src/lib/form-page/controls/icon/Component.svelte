@@ -1,7 +1,7 @@
 <script lang="ts">
     import {IconControl} from "./icon-picker.js";
 
-    let {control, item, onChange}: { control: IconControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: IconControl, item: any, onChange: Function } = $props()
     let field = control.field;
     let options = {
         "solid": "fa-solid",

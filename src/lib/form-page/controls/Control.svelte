@@ -53,7 +53,6 @@
     border-top: 1px solid #fff2;
     flex-direction: column;
 
-
     header {
       padding: 4px 8px;
       display: flex;
@@ -75,8 +74,10 @@
     }
 
     section {
-      display: flex;
       padding: 0 8px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
     }
   }
 

@@ -3,7 +3,7 @@
     import {YesNoSwitchControl} from "./yes-no-switch.js";
     import Control from "../Control.svelte"
 
-    let {control, item, onChange}: { control: YesNoSwitchControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: YesNoSwitchControl, item: any, onChange: Function } = $props()
     let field = $state(control.field);
     let name = control.field + Math.random();
 
@@ -14,7 +14,7 @@
 
 <Control {control}>
     <section>
-        <div class="switch-background" class:darken={!item[field]} on:click={clicked}>
+        <div class="switch-background" class:darken={!item[field]} onclick={clicked}>
             <div class="flex">
             </div>
             <div class="dot-wrapper" class:right={item[field]}>

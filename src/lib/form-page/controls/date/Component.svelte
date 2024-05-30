@@ -1,8 +1,9 @@
 <script lang="ts">
-	import {DateControl} from "./date.js";
-	import Control from "../Control.svelte";
+    import {DateControl} from "./date.js";
+    import Control from "../Control.svelte";
+	import type {ChangeEventHandler} from "svelte/elements";
 
-	let {control, item, onChange}: { control: DateControl, item: any, onChange: Function } = $props();
+    let {control, item = $bindable(), onChange}: { control: DateControl, item: any, onChange: ChangeEventHandler<any> } = $props();
 	let field = control.field;
 
 	const pad = (n: number) => n.toString().padStart(2, "0");
@@ -10,13 +11,15 @@
 		const date = new Date(d);
 		return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 	}
+
+	function onInput (e: InputEvent) {
+		item[field] = (e.target as HTMLInputElement).value;
+	}
 </script>
 
 
 <Control {control}>
-	<input type="date" value={formatDate(item[field])} on:input={(e) => {
-        item[field] = e.target.value;
-    }} on:change={onChange}/>
+	<input type="date" value={formatDate(item[field])} oninput={onInput} onchange={onChange}/>
 </Control>
 
 

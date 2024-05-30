@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface.js";
 import {wordCounter} from "../../../word-counter.js";
 import EditorText from "$lib/form-page/controls/content-editor/components/blocks/text/EditorText.svelte";
@@ -32,8 +31,8 @@ export default class Text implements BlockConfigInterface<EditorData, Options> {
         text: "",
         marked: true
     };
-    readonly editor: typeof SvelteComponent = EditorText;
-    readonly renderer: typeof SvelteComponent = RenderedText;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorText;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedText;
     readonly messages: Record<string, string> = {
         maxLength: "You've exceeded the maximum number of characters!",
         minLength: "You haven't entered enough characters yet!",

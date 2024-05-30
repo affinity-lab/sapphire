@@ -1,9 +1,5 @@
 <script lang="ts">
     import DefaultEditorComponent from "$lib/components/blocks/DefaultEditorComponent.svelte";
-    import {type PageHandler} from "../../page-handler.svelte";
-
-    import {type EditorData} from "./template";
-    import type Template from "./template";
 
     let {data, config, index, pageHandler, visible, valid} = $props();
 
@@ -15,7 +11,7 @@
     <!-- Very important to bind the value to the data -->
     <input type="text" class="input"
           bind:value={data.text}
-          on:input={change}
+          oninput={change}
     >
 
     <svelte:fragment slot="closed-text">

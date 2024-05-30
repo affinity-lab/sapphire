@@ -3,7 +3,7 @@
     import ContentEditor from "$lib/form-page/controls/content-editor/components/ContentEditor.svelte";
     import {onMount} from "svelte";
 
-    let {control, item, onChange} = $props();
+    let {control, item = $bindable(), onChange} = $props();
     let field = control.field;
 
     let files;

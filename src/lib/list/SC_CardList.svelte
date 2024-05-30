@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {emitter} from "../lib/event";
+    import {emitter} from "../lib/event.js";
     import ButtonComponent from "../common-ui/button/ButtonComponent.svelte";
     import TextInput from "../common-ui/input-with-icon/TextInput.svelte";
     import {Icon} from "../common-ui/icon.js";
@@ -14,19 +14,21 @@
     let currentPage = $state(0);
     let filterData = $state({});
 
-    let data = $state({});
+    let data: {items: Array<Record<string, any>>; page: number; count: number, pageSize: number } | Record<PropertyKey, never> = $state({});
 
-    $effect(refreshItems());
+    $effect(() => refreshItems());
 
-    async function refreshItems() {
-        data = await list.api.get(
+    function refreshItems() {
+        list.api.get(
             quickSearch,
             list.isFiltering ? filterData : {},
             order,
             currentPage,
             list.pageSize
-        );
-        currentPage = data.page;
+        ).then(res => {
+            data = res;
+            currentPage = data.page;
+        });
     }
 
     if (list.filterComponent) {
@@ -39,78 +41,78 @@
 </script>
 
 
-{#await refreshItems() then _}
-    <main>
-        <header>
-            <div class="wrapper">
-                <div class="header-top-row">
-                    <div class="text-with-icon">
-                        {#if list.icon}<i class="{list.icon}" style="{list.icon.colorStyle}"></i>{/if}
-                        <span>{list.name}</span>
-                    </div>
-                    <div class="button-container">
-                        {#each list.buttons as button}
-                            <ButtonComponent {button}/>
-                        {/each}
-
-                    </div>
+<main>
+    <header>
+        <div class="wrapper">
+            <div class="header-top-row">
+                <div class="text-with-icon">
+                    {#if list.icon}
+                        <i class="{list.icon.toString()}" style="{list.icon.colorStyle}"></i>
+                    {/if}
+                    <span>{list.name}</span>
                 </div>
-                {#if list.hasQuickSearch}
-                    <TextInput
-                            bind:value={quickSearch}
-                            placeholder="Search"
-                            icon={Icon.solid("magnifying-glass")}
-                            on:change={()=>{
+                <div class="button-container">
+                    {#each list.buttons as button}
+                        <ButtonComponent {button}/>
+                    {/each}
+
+                </div>
+            </div>
+            {#if list.hasQuickSearch}
+                <TextInput
+                        bind:value={quickSearch}
+                        placeholder="Search"
+                        icon={Icon.solid("magnifying-glass")}
+                        on:change={()=>{
                                 refreshItems();
                             }}
-                    />
-                {/if}
-                {#if list.orderTypes}
-                    <div class="header-row">
-                        <select bind:value={order}>
-                            {#each Object.entries(list.orderTypes) as [value, label], index}
-                                <option value={value}>{label}</option>
-                            {/each}
-                        </select>
-                    </div>
-                {/if}
-                {#if list.isFiltering}
-                    <div class="header-row">
-                        <svelte:component this={list.filterComponent} bind:data={filterData}/>
-                    </div>
-                {/if}
-            </div>
-        </header>
+                />
+            {/if}
+            {#if list.orderTypes}
+                <div class="header-row">
+                    <select bind:value={order}>
+                        {#each Object.entries(list.orderTypes) as [value, label], index}
+                            <option value={value}>{label}</option>
+                        {/each}
+                    </select>
+                </div>
+            {/if}
+            {#if list.isFiltering}
+                <div class="header-row">
+                    <svelte:component this={list.filterComponent} bind:data={filterData}/>
+                </div>
+            {/if}
+        </div>
+    </header>
 
-        <section>
-            {#key data}
-                {#each data.items as item}
-                    {@const cardified = list.cardify(item)}
-                    <div>
-                        <svelte:component this={cardified.card} card={cardified.cardData}/>
-                    </div>
-                {/each}
-            {/key}
-        </section>
+    <section>
+        {#key data}
+            {#each data.items as item}
+                {@const cardified = list.cardify(item)}
+                <div>
+                    <svelte:component this={cardified.card} card={cardified.cardData}/>
+                </div>
+            {/each}
+        {/key}
+    </section>
 
-        <div class="filler"></div>
+    <div class="filler"></div>
 
-        <footer>
-            <div class="wrapper">
-                <ButtonComponent
-                        button={new Button(Icon.solid("chevron-left").color("white"), ()=>{currentPage -= 1})}/>
-                <span>
+    <footer>
+        <div class="wrapper">
+            <ButtonComponent
+                    button={new Button(Icon.solid("chevron-left").color("white"), ()=>{currentPage -= 1})}/>
+            <span>
 					<DebouncedNumber value={currentPage + 1} max={Math.ceil(data.count/data.pageSize)}
-                                     on:change={(e)=>{currentPage=e.detail.value;refreshItems(e.detail.value)}}/>
+                                     on:change={(e)=>{currentPage=e.detail.value;refreshItems()}}/>
 					/ {Math.ceil(data.count / list.pageSize)}
 				</span>
-                <ButtonComponent
-                        button={new Button(Icon.solid("chevron-right").color("white"), ()=>{currentPage += 1})}/>
-                <span>{data.count} items</span>
-            </div>
-        </footer>
-    </main>
-{/await}
+            <ButtonComponent
+                    button={new Button(Icon.solid("chevron-right").color("white"), ()=>{currentPage += 1})}/>
+            <span>{data.count} items</span>
+        </div>
+    </footer>
+</main>
 
 <style lang="scss">
   @import "../lib/app";

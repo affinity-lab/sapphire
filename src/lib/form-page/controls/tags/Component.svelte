@@ -3,7 +3,7 @@
     import Control from "../Control.svelte";
     import type {TagsControl} from "./tags.js";
 
-    let {control, item, onChange}: { control: TagsControl, item: any, onChange: Function } = $props();
+    let {control, item = $bindable(), onChange}: { control: TagsControl, item: any, onChange: Function } = $props();
     let field = $state(control.field);
     let name = control.field + Math.random();
 
@@ -40,7 +40,7 @@
             <div class="selected-container">
                 {#each Object.keys(selected) as key}
                 <span>{selected[key]}
-                <i class="fa-solid fa-xmark" on:click={(e) => {
+                <i class="fa-solid fa-xmark" onclick={(e) => {
                     unselect(key);
                     e.preventDefault();
                 }}></i></span>

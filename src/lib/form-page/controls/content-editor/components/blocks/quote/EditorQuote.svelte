@@ -14,12 +14,12 @@
     <textarea class="textarea"
               use:autosize
               bind:value={data.text}
-              on:input={change}
+              oninput={change}
     ></textarea>
     <input type="text" class="input"
            placeholder="Author"
            bind:value={data.author}
-           on:input={change}
+           oninput={change}
     >
 </DefaultEditorComponent>
 

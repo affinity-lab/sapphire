@@ -1,5 +1,5 @@
 <script lang="ts">
-	import pageHandler from "./page-handler.svelte.js";
+    import pageHandler from "./page-handler.svelte.js";
 </script>
 
 {#each pageHandler.pages as page (page.id)}

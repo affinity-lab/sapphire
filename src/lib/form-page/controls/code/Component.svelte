@@ -4,7 +4,7 @@
     import {onMount} from "svelte";
     import autosize from "svelte-autosize";
 
-    let {control, item, onChange}: { control: CodeControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: CodeControl, item: any, onChange: Function } = $props()
     let field = control.field;
     let name = control.field + Math.random();
 

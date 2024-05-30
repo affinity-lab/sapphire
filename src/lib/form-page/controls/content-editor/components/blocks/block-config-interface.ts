@@ -6,12 +6,12 @@ export default interface BlockConfigInterface<EditorData, Options> {
     readonly label: string;
     readonly icon: Icon;
     readonly options: Options
-    readonly editor: typeof SvelteComponent;
-    readonly renderer: typeof SvelteComponent;
+    readonly editor: ConstructorOfATypedSvelteComponent;
+    readonly renderer: ConstructorOfATypedSvelteComponent;
     readonly data: EditorData;
     readonly messages: Record<string, string>
     readonly validate: (data: EditorData) => true | string[];
-    readonly previewRenderer?: typeof SvelteComponent;
+    readonly previewRenderer?: ConstructorOfATypedSvelteComponent;
 }
 
 export interface BlockConfigInterfaceWithConversion<EditorData, Options, StoredData> extends BlockConfigInterface<EditorData, Options> {

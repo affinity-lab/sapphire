@@ -34,7 +34,7 @@
                 {#if (!search) || tag.name.toLowerCase().includes(search.toLowerCase())}
                     <div class="tag">
                         <i class="fa-duotone" class:fa-shield={!tag.predefined} class:fa-shield-check={tag.predefined}
-                           on:click={()=>{tagManager.updateTag(tag.name, tag.name, !tag.predefined)}}></i>
+                           onclick={()=>{tagManager.updateTag(tag.name, tag.name, !tag.predefined)}}></i>
 
                         <input type="text" value={tag.name} on:change={(e) => {
                             tagManager.updateTag(tag.name, e.target.value, tag.predefined)
@@ -42,7 +42,7 @@
 
                         <i class="fa-light fa-trash-xmark trash"
                            style="color: orangered"
-                           on:click={(e) => {
+                           onclick={(e) => {
                            tagManager.removeTag(tag.name)
                            e.stopPropagation();
                        }}

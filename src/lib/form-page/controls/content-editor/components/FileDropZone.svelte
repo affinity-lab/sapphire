@@ -32,7 +32,7 @@
                 <div class="filename">
                     {file.name}
                 </div>
-                <button class = "delete is-small" on:click={()=>{
+                <button class = "delete is-small" onclick={()=>{
                     files = files.filter((elem)=>elem.id !== id);
                     change();
                 }}></button>

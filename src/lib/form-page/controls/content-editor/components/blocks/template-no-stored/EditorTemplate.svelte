@@ -15,7 +15,7 @@
     <!-- Very important to bind the value to the data -->
     <input type="text" class="input"
           bind:value={data.text}
-          on:input={change}
+          oninput={change}
     >
 
     <svelte:fragment slot="closed-text">

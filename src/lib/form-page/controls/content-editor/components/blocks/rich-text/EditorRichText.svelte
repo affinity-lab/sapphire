@@ -1,5 +1,6 @@
 <script lang="ts">
-    import DefaultEditorComponent from "$lib/form-page/controls/content-editor/components/blocks/DefaultEditorComponent.svelte";
+    import DefaultEditorComponent
+        from "$lib/form-page/controls/content-editor/components/blocks/DefaultEditorComponent.svelte";
 
     let {data, config, index, pageHandler, visible, valid} = $props();
 
@@ -15,7 +16,7 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field">
-                <input class="input is-size-7" type="text" bind:value={data.imageUrl} on:input={change}/>
+                <input class="input is-size-7" type="text" bind:value={data.imageUrl} oninput={change}/>
             </div>
         </div>
     </div>
@@ -25,7 +26,7 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field">
-                <input class="input is-size-7" type="text" bind:value={data.title} on:input={change}/>
+                <input class="input is-size-7" type="text" bind:value={data.title} oninput={change}/>
             </div>
         </div>
     </div>
@@ -35,7 +36,7 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field">
-                <input class="input is-size-7" type="text" bind:value={data.subtitle} on:input={change}/>
+                <input class="input is-size-7" type="text" bind:value={data.subtitle} oninput={change}/>
             </div>
         </div>
     </div>
@@ -45,7 +46,7 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field">
-                <textarea class="textarea" bind:value={data.text} on:input={change}></textarea>
+                <textarea class="textarea" bind:value={data.text} oninput={change}></textarea>
             </div>
         </div>
     </div>
@@ -55,9 +56,9 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <input class="input is-size-7" type="color" placeholder="Background" bind:value={data.colors.background} on:input={change}/>
-                <input class="input is-size-7" type="color" placeholder="Primary Text" bind:value={data.colors.primary} on:input={change}/>
-                <input class="input is-size-7" type="color" placeholder="Secondary Text" bind:value={data.colors.secondary} on:input={change}/>
+                <input class="input is-size-7" type="color" placeholder="Background" bind:value={data.colors.background} oninput={change}/>
+                <input class="input is-size-7" type="color" placeholder="Primary Text" bind:value={data.colors.primary} oninput={change}/>
+                <input class="input is-size-7" type="color" placeholder="Secondary Text" bind:value={data.colors.secondary} oninput={change}/>
             </div>
         </div>
     </div>

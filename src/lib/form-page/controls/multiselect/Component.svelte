@@ -3,7 +3,7 @@
     import Control from "../Control.svelte";
     import {MultiselectControl} from "$lib/form-page/controls/multiselect/multiselect.js";
 
-    let {control, item, onChange}: { control: MultiselectControl, item: any, onChange: Function } = $props();
+    let {control, item = $bindable(), onChange}: { control: MultiselectControl, item: any, onChange: Function } = $props();
     let field = $state(control.field);
     let name = control.field + Math.random();
 
@@ -37,7 +37,7 @@
             <div class="selected-container">
                 {#each Object.keys(selected) as key}
                     <span>{selected[key]}
-                    <i class="fa-solid fa-xmark" on:click={(e) => {
+                    <i class="fa-solid fa-xmark" onclick={(e) => {
                         unselect(key);
                         e.preventDefault();
                     }}></i>
@@ -48,7 +48,7 @@
             <input list={name} on:change={(e)=>{
                 select(e.target.value, options);
                 e.target.value="";
-            }} on:input={(e)=>{
+            }} oninput={(e)=>{
                 if (e instanceof InputEvent) {
                     e.target.value = "";
                 }

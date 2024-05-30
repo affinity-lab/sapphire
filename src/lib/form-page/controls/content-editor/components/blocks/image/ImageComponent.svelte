@@ -21,7 +21,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <input class="input is-size-7" type="text" placeholder="Title" bind:value={data.title} on:input={change}/>
+                    <input class="input is-size-7" type="text" placeholder="Title" bind:value={data.title} oninput={change}/>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <input class="input is-small" type="text" placeholder="Alt" bind:value={data.alt} on:input={change}/>
+                    <input class="input is-small" type="text" placeholder="Alt" bind:value={data.alt} oninput={change}/>
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <input class="input is-small" type="text" placeholder="Url" bind:value={data.url} on:input={change}/>
+                    <input class="input is-small" type="text" placeholder="Url" bind:value={data.url} oninput={change}/>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <textarea class="textarea is-small" placeholder="Description" bind:value={data.description} on:input={change} use:autosize></textarea>
+                    <textarea class="textarea is-small" placeholder="Description" bind:value={data.description} oninput={change} use:autosize></textarea>
                 </div>
             </div>
         </div>

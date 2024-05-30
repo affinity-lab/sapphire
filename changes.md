@@ -1,0 +1,2 @@
+- Sapphire Menu does not allow color: property, instead it uses the Icon.solid(...).color("any")
+- ButtonComponent no longer has on:hover

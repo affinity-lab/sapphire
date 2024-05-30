@@ -2,7 +2,7 @@
 
     import {userStore} from "../lib/user-store.svelte.js";
 
-    let {brand, logout, hasUser}: {
+    let {brand, logout, hasUser = true}: {
         brand: { avatar: string, title: string, subtitle: string },
         logout: () => void,
         hasUser: boolean
@@ -21,11 +21,11 @@
         {#if hasUser}
             <div class="text">
 
-                <div>{userStore.user.name}</div>
-                <div on:click={()=> logout()}>SIGN OUT</div>
+                <div>{userStore.user?.name}</div>
+                <div onclick={()=> logout()}>SIGN OUT</div>
 
             </div>
-            {#if (userStore.user.avatar)}
+            {#if userStore.user?.avatar}
                 <div class="img" style="background-image: url({userStore.user.avatar})"></div>
             {/if}
         {/if}

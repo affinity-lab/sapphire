@@ -1,7 +1,8 @@
 <script lang="ts">
-	import {userStore} from "../lib/user-store.svelte.js";
+    import {userStore} from "../lib/user-store.svelte.js";
+    import type {MenuItem} from "./menu-item.svelte.js";
 
-	let {menu} = $props();
+    let {menu}: {menu: Array<MenuItem>} = $props();
 </script>
 
 <main>
@@ -9,9 +10,9 @@
 		{#each menu as menuItem}
 			{#if userStore.hasRole(menuItem.roles)}
 				<li>
-					<a on:click={()=>{menuItem.subItems ? menuItem.open() : menuItem.onclick()}}
+					<a onclick={menuItem.actionFn}
 						class:has-sub-items={menuItem.subItems}>
-						<i class="icon fa-fw {menuItem.icon}" style="color:{menuItem.color}"></i>
+						<i class="icon fa-fw {menuItem.icon}" style="{menuItem.icon.colorStyle}"></i>
 						<span>{menuItem.label}</span>
 						{#if menuItem.subItems}
 							<i class="open-close fa-light" class:fa-plus={!menuItem.opened} class:fa-minus={menuItem.opened}></i>

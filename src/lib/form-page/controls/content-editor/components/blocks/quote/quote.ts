@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorQuote from "./EditorQuote.svelte";
 import RenderedQuote from "./RenderedQuote.svelte";
@@ -22,8 +21,8 @@ export default class Quote implements BlockConfigInterface<EditorData, Options> 
         text: "",
         author: ""
     };
-    readonly editor: typeof SvelteComponent = EditorQuote;
-    readonly renderer: typeof SvelteComponent = RenderedQuote;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorQuote;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedQuote;
     readonly messages: Record<string, string> = {
 
     }

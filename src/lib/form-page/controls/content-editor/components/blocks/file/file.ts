@@ -1,6 +1,5 @@
-import type {SvelteComponent} from 'svelte';
 import type {BlockConfigInterfaceWithConversion} from "../block-config-interface.js";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import EditorFile from "$lib/form-page/controls/content-editor/components/blocks/file/EditorFile.svelte";
 import RenderedFile from "$lib/form-page/controls/content-editor/components/blocks/file/RenderedFile.svelte";
 import type {Icon} from "$lib/common-ui/icon.js";
@@ -24,8 +23,8 @@ export default class FileUpload implements BlockConfigInterfaceWithConversion<Ed
     readonly data: EditorData = {
         files: []
     };
-    readonly editor: typeof SvelteComponent = EditorFile;
-    readonly renderer: typeof SvelteComponent = RenderedFile;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorFile;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedFile;
     readonly messages: Record<string, string> = {
         noFile: "File must be uploaded!"
     }

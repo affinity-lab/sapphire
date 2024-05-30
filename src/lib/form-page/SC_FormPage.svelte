@@ -1,10 +1,11 @@
 <script lang="ts">
     import type {FormPage} from "./form-page.svelte.js";
     import ButtonComponent from "../common-ui/button/ButtonComponent.svelte";
-	import {onMount} from "svelte";
+    import {onMount} from "svelte";
 
-    let {page}: { page: FormPage } = $props();
+    let {page = $bindable()}: { page: FormPage } = $props();
 	let loading = $state(true);
+
 	onMount(async () => {
 		await page.initialize()
         loading = false

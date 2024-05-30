@@ -1,6 +1,5 @@
 import {AbstractControl} from "$lib/form-page/controls/abstract-control.svelte.js";
 import Component from "$lib/form-page/controls/link/Component.svelte";
-import type {SvelteComponent} from "svelte";
 
 export type Link = {
     label: string,
@@ -9,7 +8,7 @@ export type Link = {
 export type LinkGetter = (itemField: any) => Link | Link[]
 
 export class LinkControl extends AbstractControl {
-    component: typeof SvelteComponent = Component
+    component: ConstructorOfATypedSvelteComponent = Component
     links: Link[] = $state([]);
 
     constructor(field: string, label: string, public _links: Link | Link[] | LinkGetter) {

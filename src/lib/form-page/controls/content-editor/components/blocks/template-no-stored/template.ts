@@ -18,8 +18,8 @@ export default class Template implements BlockConfigInterface<EditorData, Option
     readonly data: EditorData = {
 
     };
-    readonly editor: typeof SvelteComponent = EditorTemplate;
-    readonly renderer: typeof SvelteComponent = RenderedTemplate;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorTemplate;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedTemplate;
     readonly messages: Record<string, string> = {
 
     }

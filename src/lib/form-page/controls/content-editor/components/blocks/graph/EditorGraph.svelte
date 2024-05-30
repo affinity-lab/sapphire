@@ -44,7 +44,7 @@
         </div>
         <div class="field-body">
             <div class="field control">
-                <input class="input is-size-7" type="text" bind:value={data.title} on:input={change}/>
+                <input class="input is-size-7" type="text" bind:value={data.title} oninput={change}/>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field">
-                <input class="input is-size-7" type="text" bind:value={headerData} on:input={newHeaderInput}/>
+                <input class="input is-size-7" type="text" bind:value={headerData} oninput={newHeaderInput}/>
             </div>
         </div>
     </div>
@@ -66,9 +66,9 @@
             </div>
             <div class="field-body has-addons">
                 <div class="control field has-addons">
-                    <input class="input is-size-7" type="text" placeholder="Name" bind:value={data.lines[index].name} on:input={change}/>
-                    <input class="input is-size-7" type="text" placeholder="Points" bind:value={chartData[index]} on:input={()=>{newGraphInput(index)}}/>
-                    <button class="button is-small" on:click={()=>{removeLine(index)}}><i class="bi bi-trash"></i></button>
+                    <input class="input is-size-7" type="text" placeholder="Name" bind:value={data.lines[index].name} oninput={change}/>
+                    <input class="input is-size-7" type="text" placeholder="Points" bind:value={chartData[index]} oninput={()=>{newGraphInput(index)}}/>
+                    <button class="button is-small" onclick={()=>{removeLine(index)}}><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </div>
@@ -78,7 +78,7 @@
         <div class="field-label is-normal"></div>
         <div class="field-body has-addons">
             <div class="control field">
-                <button class="button is-small" on:click={addLine}><i class="bi bi-plus"></i></button>
+                <button class="button is-small" onclick={addLine}><i class="bi bi-plus"></i></button>
             </div>
         </div>
     </div>

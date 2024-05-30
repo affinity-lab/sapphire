@@ -1,7 +1,7 @@
 <script lang="ts">
     import {createEventDispatcher} from "svelte";
 
-    let {value, icon, placeholder} = $props();
+    let {value = $bindable(), icon, placeholder} = $props();
 
     let dispatch = createEventDispatcher();
     let debounceTimeout;
@@ -12,9 +12,9 @@
     }
 </script>
 
-<div class="input" on:click={() => dispatch("click")}>
+<div class="input" onclick={() => dispatch("click")}>
     <i class="{icon}"></i>
-    <input type="text" bind:value={value} {placeholder} on:input={input} on:focus={() => dispatch("focus")} on:focusout={() => dispatch("focusout")}/>
+    <input type="text" bind:value={value} {placeholder} oninput={input} on:focus={() => dispatch("focus")} on:focusout={() => dispatch("focusout")}/>
 </div>
 
 <style lang="scss">

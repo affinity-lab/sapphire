@@ -1,8 +1,7 @@
-import type {SvelteComponent} from 'svelte';
 import type {BlockConfigInterfaceWithConversion} from "../block-config-interface";
 import EditorGallery from "./EditorGallery.svelte";
 import RenderedGallery from "./RenderedGallery.svelte";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import type {Icon} from "$lib/common-ui/icon.js";
 
 export interface Options {
@@ -37,8 +36,8 @@ export default class Gallery implements BlockConfigInterfaceWithConversion<Edito
         title: "",
         images: []
     };
-    readonly editor: typeof SvelteComponent = EditorGallery;
-    readonly renderer: typeof SvelteComponent = RenderedGallery;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorGallery;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedGallery;
     readonly messages: Record<string, string> = {
         emptyGallery: "Gallery must not be empty!",
         emptyUrl: "Field 'url' must not be empty!",

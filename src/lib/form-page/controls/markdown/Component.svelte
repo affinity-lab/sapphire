@@ -4,14 +4,14 @@
     import autosize from "svelte-autosize";
     import Control from "../Control.svelte"
 
-    let {control, item, onChange}: { control: MarkdownControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: MarkdownControl, item: any, onChange: Function } = $props()
     let field = control.field;
     if (!item[field]) item[field] = "";
 
 </script>
 <Control {control}>
     <div class="markdown">
-        <textarea bind:value={item[field]} on:input={onChange} use:autosize/>
+        <textarea bind:value={item[field]} oninput={onChange} use:autosize/>
         <div>
             {@html marked.parse(item[field], {breaks: true})}
         </div>
