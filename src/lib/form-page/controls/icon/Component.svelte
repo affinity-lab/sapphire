@@ -1,7 +1,8 @@
 <script lang="ts">
     import {IconControl} from "./icon-picker.js";
+    import type {ChangeEventHandler} from "svelte/elements";
 
-    let {control, item = $bindable(), onChange}: { control: IconControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: IconControl, item: any, onChange: ChangeEventHandler<HTMLInputElement> } = $props()
     let field = control.field;
     let options = {
         "solid": "fa-solid",
@@ -23,7 +24,7 @@
     <label>{control.label}</label>
 
     <span>Search icons <a href="https://fontawesome.com/search" target="_blank">here</a>.</span>
-    <input type="text" placeholder="fa-house" bind:value={item[field]["icon"]} on:change={onChange}/>
+    <input type="text" placeholder="fa-house" bind:value={item[field]["icon"]} onchange={onChange}/>
 
     <label>Select icon family from the list:</label>
     <select bind:value={item[field]["family"]}>
@@ -34,7 +35,7 @@
 
     {#if control.isColorPicker}
         <label>Select color:</label>
-        <input type="color" bind:value={item[field]["color"]} on:change={onChange}/>
+        <input type="color" bind:value={item[field]["color"]} onchange={onChange}/>
     {/if}
 </div>
 

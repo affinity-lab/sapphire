@@ -12,7 +12,7 @@
 		return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
 	}
 
-	function onInput (e: InputEvent) {
+	function onInput (e: Event & { currentTarget: EventTarget & HTMLInputElement }) {
 		item[field] = (e.target as HTMLInputElement).value;
 	}
 </script>

@@ -1,8 +1,10 @@
 <script lang="ts">
     import Control from "../Control.svelte";
     import {marked} from "marked";
+    import {LangMarkdown} from "$lib/form-page/controls/lang-markdown/lang-markdown.js";
+    import type {FormEventHandler} from "svelte/elements";
 
-    let {control, item, onChange}: { control, item: any, onChange: Function } = $props();
+    let {control, item, onChange}: { control: LangMarkdown, item: any, onChange: FormEventHandler<HTMLTextAreaElement> } = $props();
     let field = $state(control.field);
 
     let selectedLang: string = $state("HU" || null);
@@ -10,6 +12,7 @@
     $effect(()=>{
         selectedLang = "HU"
     })
+    //TODO scss import
 </script>
 
 
@@ -17,7 +20,7 @@
     <main>
         <header>
             {#each ["HU", "EN"] as lang}
-                <section on:click={() => selectedLang = lang} class:selected={selectedLang === lang} class:missing={!item[field][lang]}>
+                <section onclick={() => selectedLang = lang} class:selected={selectedLang === lang} class:missing={!item[field][lang]}>
                     {lang}
                 </section>
             {/each}
