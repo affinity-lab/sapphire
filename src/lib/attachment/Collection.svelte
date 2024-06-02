@@ -4,10 +4,10 @@
     import {Button} from "../common-ui/button/button.svelte.js";
     import {Icon} from "../common-ui/icon.js";
     import fileSize from "file-size";
-    import type {Attachment, Collection} from "./types";
-    import {AttachmentDetailsPopup} from "./attachment-details-popup";
+    import type {Attachment, AttachmentApiInterface, Collection} from "./types.js";
+    import {AttachmentDetailsPopup} from "./attachment-details-popup.js";
 
-    let {collection, api, loadData, label} = $props();
+    const {collection, api, loadData, label}: {collection: Collection, api: AttachmentApiInterface, loadData: Function, label: string} = $props();
 
     let ext = collection.rules.ext;
     if (typeof ext === "string") {
@@ -22,7 +22,7 @@
                 file: file,
                 metaFields: collection.publicMetaFields,
             },
-            (metadata, newName) => {
+            (metadata: any, newName: string) => {
                 api.saveMetaData(collection.name, file.name, metadata, newName)
             },
             ()=>loadData()
@@ -38,7 +38,7 @@
                 <label class="file-input">
                     <i class="fa-fa fa-plus"></i>
 
-                    <input type="file" name="images" multiple bind:files accept={ext ? (ext.join(", ")) : "*/*"} on:change={()=>{
+                    <input type="file" name="images" multiple bind:files accept={ext ? (ext.join(", ")) : "*/*"} onchange={()=>{
                         api.upload(collection.name, files).then(() => {
                         loadData();
                     });}}>

@@ -12,7 +12,12 @@ export class AttachmentDetailsPopup extends Popup {
         return true;
     }
 
-    constructor(public caption: string, data: { file: Attachment, metaFields: MetaField[] }, private changeMeta: Function, private loadData: Function) {
+    constructor(
+        public caption: string,
+        data: { file: Attachment, metaFields: MetaField[] },
+        public changeMeta: Function,
+        private loadData: Function
+    ) {
         super();
         this.data = {
             ...data,
