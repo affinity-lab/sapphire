@@ -1,5 +1,4 @@
 <script lang="ts">
-
     import Control from "../Control.svelte";
     import {MultiselectControl} from "$lib/form-page/controls/multiselect/multiselect.js";
 
@@ -8,7 +7,6 @@
     let name = control.field + Math.random();
 
     let selected: Record<string, any> = $state(control.convertToRecord(item[field]))
-
 
     function select(newKey: string, options: Record<string, any>) {
         for (const [key, value] of Object.entries(options)) {
@@ -45,7 +43,7 @@
                 {/each}
             </div>
 
-            <input list={name} on:change={(e)=>{
+            <input list={name} onchange={(e)=>{
                 select(e.target.value, options);
                 e.target.value="";
             }} oninput={(e)=>{

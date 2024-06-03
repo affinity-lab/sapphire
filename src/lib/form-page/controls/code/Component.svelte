@@ -2,6 +2,7 @@
     import {CodeControl} from "./code.js";
     import Control from "../Control.svelte"
     import {onMount} from "svelte";
+    //TODO
     import autosize from "svelte-autosize";
 
     let {control, item = $bindable(), onChange}: { control: CodeControl, item: any, onChange: Function } = $props()
@@ -21,7 +22,7 @@
 </script>
 
 <Control {control}>
-    <textarea bind:this={codeArea} bind:value={item[field]} on:change={onChange} use:autosize/>
+    <textarea bind:this={codeArea} bind:value={item[field]} onchange={onChange} use:autosize/>
 </Control>
 <style lang="scss">
   @import "../inputs-style";
