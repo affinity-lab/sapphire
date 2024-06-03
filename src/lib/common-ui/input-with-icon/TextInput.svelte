@@ -1,20 +1,23 @@
 <script lang="ts">
-    import {createEventDispatcher} from "svelte";
+    import type {Icon} from "../icon.js";
+    import type {FocusEventHandler, MouseEventHandler} from "svelte/elements";
 
-    let {value = $bindable(), icon, placeholder} = $props();
+    let {value = $bindable(), icon, placeholder, onchange, onfocusout, onfocus, onclick}: {
+        value: string, icon: Icon, placeholder?: string, onchange?: Function, onfocusout?:  FocusEventHandler<HTMLInputElement>,
+        onfocus?:  FocusEventHandler<HTMLInputElement>, onclick?: MouseEventHandler<HTMLDivElement>} = $props();
 
-    let dispatch = createEventDispatcher();
-    let debounceTimeout;
+    let debounceTimeout: number;
 
     let input = () => {
         clearTimeout(debounceTimeout);
-        debounceTimeout = setTimeout(() => dispatch("change", {value}), 300);
+        //TODO
+        if( onchange ) debounceTimeout = setTimeout(() => onchange({detail: {value}}), 300);
     }
 </script>
 
-<div class="input" onclick={() => dispatch("click")}>
-    <i class="{icon}"></i>
-    <input type="text" bind:value={value} {placeholder} oninput={input} on:focus={() => dispatch("focus")} on:focusout={() => dispatch("focusout")}/>
+<div class="input" onclick={onclick}>
+    <i class="{icon.toString()}"></i>
+    <input type="text" bind:value={value} {placeholder} oninput={input} {onfocus} {onfocusout}/>
 </div>
 
 <style lang="scss">

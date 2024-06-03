@@ -9,7 +9,7 @@
 
     const {list}: { list: CardList } = $props();
 
-    let quickSearch: string = "";
+    let quickSearch: string = $state("");
     let order: string = $state(list.orderTypes ? Object.keys(list.orderTypes)[0] : "");
     let currentPage = $state(0);
     let filterData = $state({});
@@ -63,7 +63,7 @@
                         bind:value={quickSearch}
                         placeholder="Search"
                         icon={Icon.solid("magnifying-glass")}
-                        on:change={()=>{
+                        onchange={()=>{
                                 refreshItems();
                             }}
                 />
@@ -104,7 +104,7 @@
                     button={new Button(Icon.solid("chevron-left").color("white"), ()=>{currentPage -= 1})}/>
             <span>
 					<DebouncedNumber value={currentPage + 1} max={Math.ceil(data.count/data.pageSize)}
-                                     on:change={(e)=>{currentPage=e.detail.value;refreshItems()}}/>
+                                     onchange={(e)=>{currentPage=e.detail.value;refreshItems()}}/>
 					/ {Math.ceil(data.count / list.pageSize)}
 				</span>
             <ButtonComponent

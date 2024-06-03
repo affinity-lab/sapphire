@@ -1,15 +1,16 @@
 <script lang="ts">
     import {TimeControl} from "./time.js";
     import Control from "../Control.svelte"
+    import type {ChangeEventHandler} from "svelte/elements";
 
-    let {control, item = $bindable(), onChange}: {control: TimeControl, item: any, onChange: Function} = $props()
+    let {control, item = $bindable(), onChange}: {control: TimeControl, item: any, onChange: ChangeEventHandler<HTMLInputElement>} = $props()
     let field = control.field;
 
 
 </script>
 
 <Control {control}>
-    <input type="time" bind:value={item[field]} on:change={onChange}/>
+    <input type="time" bind:value={item[field]} onchange={onChange}/>
 </Control>
 
 <style lang="scss">

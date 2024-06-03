@@ -39,8 +39,8 @@
 </Control>
 
 <style lang="scss">
-  @import "../../../../node_modules/@affinity-lab/sapphire/dist/form-page/controls/inputs-style";
-  @import "../../../../node_modules/@affinity-lab/sapphire/dist/lib/app";
+  //@import "../../../../node_modules/@affinity-lab/sapphire/dist/form-page/controls/inputs-style";
+  //@import "../../../../node_modules/@affinity-lab/sapphire/dist/lib/app";
   .markdown {
     display: grid;
     gap: 8px;

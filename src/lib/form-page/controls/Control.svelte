@@ -10,8 +10,7 @@
     <div class="container bulma"
          class:row={control.layout==="row"}
          class:column={control.layout==="column"}
-         class:force-row={control.layout==="forceRow"}
-    >
+         class:force-row={control.layout==="forceRow"}>
         <header title={control.label}>
             <label><i class="fa-fa {control.icon}" style="{control.icon.colorStyle}"></i> {control.label}</label>
         </header>

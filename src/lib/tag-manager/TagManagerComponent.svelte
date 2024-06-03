@@ -2,12 +2,27 @@
     import SC_Popup from "$lib/popup/SC_Popup.svelte";
     import type {TagManagerPopup} from "$lib/tag-manager/tag-manager-popup.js";
     import {Icon} from "$lib/common-ui/icon.js";
+    import type {Tag} from "$lib/tag-manager/types.js";
 
     const {popup}: { popup: TagManagerPopup } = $props();
 
     let search = $state("");
 
     let tagManager = popup.data.tagManager;
+
+    function updateTag(e: Event, tag: Tag){
+        tagManager.updateTag(tag.name,(e.target as HTMLInputElement).value, tag.predefined)
+    }
+
+    function addTag(e: Event){
+        tagManager.addTag((e.target as HTMLInputElement).value);
+        (e.target as HTMLInputElement).value = "";
+    }
+
+    function removeTag(e:Event, tag: Tag){
+        tagManager.removeTag(tag.name)
+        e.stopPropagation();
+    }
 </script>
 
 
@@ -18,14 +33,12 @@
                 <i class="fa-duotone fa-magnifying-glass"></i>
                 <input class="new-tag" type="text" bind:value={search}
                        placeholder="Keresés a címkék között"
-                       icon={Icon.regular("magnifying-glass")}}>
+                       icon={Icon.regular("magnifying-glass")}>
+                <!--                       TODO-->
             </div>
             <div class="tag">
             <i class="fa-thin fa-shield-plus"></i>
-            <input class="new-tag" type="text" placeholder="Új címke" on:change={(e)=>{
-                tagManager.addTag(e.target.value);
-                e.target.value = "";
-            }}>
+            <input class="new-tag" type="text" placeholder="Új címke" onchange={(e)=>addTag(e)}>
         </div>
         </header>
 
@@ -36,16 +49,11 @@
                         <i class="fa-duotone" class:fa-shield={!tag.predefined} class:fa-shield-check={tag.predefined}
                            onclick={()=>{tagManager.updateTag(tag.name, tag.name, !tag.predefined)}}></i>
 
-                        <input type="text" value={tag.name} on:change={(e) => {
-                            tagManager.updateTag(tag.name, e.target.value, tag.predefined)
-                    }}>
+                        <input type="text" value={tag.name} onchange={(e) => updateTag(e, tag)}>
 
                         <i class="fa-light fa-trash-xmark trash"
                            style="color: orangered"
-                           onclick={(e) => {
-                           tagManager.removeTag(tag.name)
-                           e.stopPropagation();
-                       }}
+                           onclick={(e) => removeTag(e,tag)}
                         ></i>
                     </div>
                 {/if}

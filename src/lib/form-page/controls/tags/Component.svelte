@@ -31,6 +31,11 @@
 
     let options: Record<string, any> = $state({});
     let refresh = async () => options = await control.getOptionsRecord();
+
+    function controlOnChange(e: Event, options: Record<string, any>){
+        select((e.target as HTMLInputElement).value, options);
+        (e.target as HTMLInputElement).value="";
+    }
 </script>
 
 
@@ -40,6 +45,7 @@
             <div class="selected-container">
                 {#each Object.keys(selected) as key}
                 <span>{selected[key]}
+                <!--    TODO-->
                 <i class="fa-solid fa-xmark" onclick={(e) => {
                     unselect(key);
                     e.preventDefault();
@@ -47,11 +53,7 @@
                 {/each}
             </div>
 
-            <input list={name} on:change={(e)=>{
-                select(e.target.value, options);
-                e.target.value="";
-            }}
-            >
+            <input list={name} onchange={(e)=>{controlOnChange(e, options)}}>
             <datalist id={name}>
                 {#each Object.entries(options) as [key, value]}
                     {#if !Object.keys(selected).includes(key)}

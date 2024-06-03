@@ -1,4 +1,5 @@
-import type BlockConfigInterface, {BlockConfigInterfaceWithConversion} from "./blocks/block-config-interface";
+import type BlockConfigInterface from "./blocks/block-config-interface";
+import type { BlockConfigInterfaceWithConversion } from "./blocks/block-config-interface";
 import {v4 as uuidv4} from 'uuid';
 
 type GeneralBlockConfigInterface = BlockConfigInterface<any, any> | BlockConfigInterfaceWithConversion<any, any, any>

@@ -6,7 +6,6 @@
     let {control, item = $bindable(), onChange}: {control: StringControl, item: any, onChange: FormEventHandler<any>} = $props()
     let field = control.field;
 
-
 </script>
 
 <Control {control}>

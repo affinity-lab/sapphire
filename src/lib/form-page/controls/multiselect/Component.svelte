@@ -26,6 +26,17 @@
         item[field] = control.getSaveOptions(selected);
         onChange();
     }
+
+    function onInput(e: Event) {
+        if (e instanceof InputEvent) {
+           ( e.target as HTMLInputElement).value = "";
+        }
+    }
+
+    function controlOnChange(e: Event, options: Record<string, any>){
+        select((e.target as HTMLInputElement).value, options);
+        (e.target as HTMLInputElement).value="";
+    }
 </script>
 
 
@@ -35,6 +46,7 @@
             <div class="selected-container">
                 {#each Object.keys(selected) as key}
                     <span>{selected[key]}
+                    <!--TODO-->
                     <i class="fa-solid fa-xmark" onclick={(e) => {
                         unselect(key);
                         e.preventDefault();
@@ -43,15 +55,7 @@
                 {/each}
             </div>
 
-            <input list={name} onchange={(e)=>{
-                select(e.target.value, options);
-                e.target.value="";
-            }} oninput={(e)=>{
-                if (e instanceof InputEvent) {
-                    e.target.value = "";
-                }
-            }}
-            >
+            <input list={name} onChange={(e) => controlOnChange(e, options)} oninput={onInput}>
             <datalist id={name}>
                 {#each Object.entries(options) as [key, value]}
                     <option>{value}</option>

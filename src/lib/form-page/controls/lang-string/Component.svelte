@@ -6,7 +6,7 @@
     let {control, item, onChange}: { control: LangString, item: any, onChange: Function } = $props();
     let field = $state(control.field);
 
-    let selectedLang: string = $state("HU" || null);
+    let selectedLang: string = $state("HU");
 
     $effect(()=>{
         selectedLang = "HU"
@@ -19,22 +19,22 @@
     <main>
         <header>
             {#each ["HU", "EN"] as lang}
-                <section on:click={() => selectedLang = lang} class:selected={selectedLang === lang} class:missing={!item[field][lang]}>
+                <section onclick={() => selectedLang = lang} class:selected={selectedLang === lang} class:missing={!item[field][lang]}>
                     {lang}
                 </section>
             {/each}
         </header>
         <div class="content">
             {#each ["HU", "EN"] as lang}
-                <input type="text" bind:value={item[field][lang]} style="display: {selectedLang === lang ? 'block' : 'none'}" on:input={()=>onChange()}/>
+                <input type="text" bind:value={item[field][lang]} style="display: {selectedLang === lang ? 'block' : 'none'}" oninput={()=>onChange()}/>
             {/each}
         </div>
     </main>
 </Control>
 
 <style lang="scss">
-  @import "../../../../node_modules/@affinity-lab/sapphire/dist/form-page/controls/inputs-style";
-  @import "../../../../node_modules/@affinity-lab/sapphire/dist/lib/app";
+  //@import "../../../../node_modules/@affinity-lab/sapphire/dist/form-page/controls/inputs-style";
+  //@import "../../../../node_modules/@affinity-lab/sapphire/dist/lib/app";
 
   main {
     width: 100%;
