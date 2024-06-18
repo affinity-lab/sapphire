@@ -4,6 +4,7 @@ import type {Icon} from "$lib/common-ui/icon.js";
 
 export abstract class AbstractList {
     abstract get component(): typeof SvelteComponent;
+    id: number = Math.random();
 
     buttons: Button[] = [];
 

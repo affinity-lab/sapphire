@@ -1,5 +1,6 @@
 import type {ErrorObject, FormApiInterface} from "./types.js";
 import type {OptionApi} from "$lib/form-page/controls/controls.js";
+import type {MaybePromise} from "@sveltejs/kit";
 
 export class FormApiBlitz implements FormApiInterface {
 	constructor(protected endpoint: string, protected authCheck: (res: Response) => Promise<Response>) {
@@ -29,13 +30,18 @@ export class FormApiBlitz implements FormApiInterface {
 			.then(res => res.json());
 	}
 
-	getOptions (command: string): OptionApi {
-		return async () => {return await fetch(
+	getOptions (command: string, params?: () => MaybePromise<Record<string, any>>): OptionApi {
+		return async () => {
+			let body;
+			if (params) body = await params();
+			else body = {}
+
+			return await fetch(
 			`${this.endpoint}.${command}`,
 			{
 				method: "POST",
 				headers: {"Content-Type": "application/json"},
-				body: JSON.stringify({})
+				body: JSON.stringify(body)
 			})
 			.then(this.authCheck)
 			.then(res => res.json());}

@@ -12,10 +12,8 @@ export class MenuItem {
 
 	roles?: string[];
 
-	constructor(label: MenuView, subItems: MenuItem[], roles?: string | string[]);
-	constructor(label: MenuView, onclick: () => void, roles?: string | string[]);
-	constructor(label: string, subItems: MenuItem[], roles?:string | string[]);
-	constructor(label: string, onclick: () => void, roles?: string | string[]);
+	constructor(label: MenuView | string, subItems: MenuItem[], roles?: string | string[] | ((role: any) => boolean));
+	constructor(label: MenuView | string, onclick: () => void, roles?: string | string[] | ((role: any) => boolean));
 	constructor(...args: any) {
 
 		if (typeof args[0] === "string") {

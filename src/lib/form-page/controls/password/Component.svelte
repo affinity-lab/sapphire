@@ -29,5 +29,6 @@
   }
   input{
     margin-right: -28px;
+    width: calc(100% - 28px);
   }
 </style>

@@ -18,7 +18,7 @@
                 <i class="fa-duotone fa-magnifying-glass"></i>
                 <input class="new-tag" type="text" bind:value={search}
                        placeholder="Keresés a címkék között"
-                       icon={Icon.regular("magnifying-glass")}}>
+                >
             </div>
             <div class="tag">
             <i class="fa-thin fa-shield-plus"></i>

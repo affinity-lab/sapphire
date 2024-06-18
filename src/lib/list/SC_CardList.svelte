@@ -6,6 +6,7 @@
     import DebouncedNumber from "../common-ui/debounced-number/DebouncedNumber.svelte";
     import {Button} from "../common-ui/button/button.svelte.js";
     import {CardList} from "./card-list.svelte";
+    import {onMount} from "svelte";
 
     const {list}: { list: CardList } = $props();
 
@@ -16,7 +17,7 @@
 
     let data = $state({});
 
-    $effect(refreshItems());
+    // $effect(refreshItems());
 
     async function refreshItems() {
         data = await list.api.get(
@@ -36,81 +37,83 @@
             })).tooltip("Filter the list"))
     }
     for (let eventType of list.refreshOnEvents) emitter.subscribe(eventType, () => refreshItems());
+
+    onMount(()=>{
+        refreshItems();
+    })
 </script>
 
 
-{#await refreshItems() then _}
-    <main>
-        <header>
-            <div class="wrapper">
-                <div class="header-top-row">
-                    <div class="text-with-icon">
-                        {#if list.icon}<i class="{list.icon}" style="{list.icon.colorStyle}"></i>{/if}
-                        <span>{list.name}</span>
-                    </div>
-                    <div class="button-container">
-                        {#each list.buttons as button}
-                            <ButtonComponent {button}/>
-                        {/each}
-
-                    </div>
+<main>
+    <header>
+        <div class="wrapper">
+            <div class="header-top-row">
+                <div class="text-with-icon">
+                    {#if list.icon}<i class="{list.icon}" style="{list.icon.colorStyle}"></i>{/if}
+                    <span>{list.name}</span>
                 </div>
-                {#if list.hasQuickSearch}
-                    <TextInput
-                            bind:value={quickSearch}
-                            placeholder="Search"
-                            icon={Icon.solid("magnifying-glass")}
-                            on:change={()=>{
-                                refreshItems();
-                            }}
-                    />
-                {/if}
-                {#if list.orderTypes}
-                    <div class="header-row">
-                        <select bind:value={order}>
-                            {#each Object.entries(list.orderTypes) as [value, label], index}
-                                <option value={value}>{label}</option>
-                            {/each}
-                        </select>
-                    </div>
-                {/if}
-                {#if list.isFiltering}
-                    <div class="header-row">
-                        <svelte:component this={list.filterComponent} bind:data={filterData}/>
-                    </div>
-                {/if}
+                <div class="button-container">
+                    {#each list.buttons as button}
+                        <ButtonComponent {button}/>
+                    {/each}
+
+                </div>
             </div>
-        </header>
+            {#if list.hasQuickSearch}
+                <TextInput
+                        bind:value={quickSearch}
+                        placeholder="Search"
+                        icon="{Icon.solid('magnifying-glass')}"
+                        on:change={()=>{
+                            refreshItems();
+                        }}
+                />
+            {/if}
+            {#if list.orderTypes}
+                <div class="header-row">
+                    <select bind:value={order} on:change={()=>refreshItems()}>
+                        {#each Object.entries(list.orderTypes) as [value, label], index}
+                            <option value={value}>{label}</option>
+                        {/each}
+                    </select>
+                </div>
+            {/if}
+            {#if list.isFiltering}
+                <div class="header-row">
+                    <svelte:component this={list.filterComponent} bind:data={filterData}/>
+                </div>
+            {/if}
+        </div>
+    </header>
 
-        <section>
-            {#key data}
-                {#each data.items as item}
-                    {@const cardified = list.cardify(item)}
-                    <div>
-                        <svelte:component this={cardified.card} card={cardified.cardData}/>
-                    </div>
-                {/each}
-            {/key}
-        </section>
+    <section>
+        {#key data}
+            {#each data.items as item}
+                {@const cardified = list.cardify(item)}
+                <div>
+                    <svelte:component this={cardified.card} card={cardified.cardData}/>
+                </div>
+            {/each}
+        {/key}
+    </section>
 
-        <div class="filler"></div>
+    <div class="filler"></div>
 
-        <footer>
-            <div class="wrapper">
-                <ButtonComponent
-                        button={new Button(Icon.solid("chevron-left").color("white"), ()=>{currentPage -= 1})}/>
-                <span>
+    <footer>
+        <div class="wrapper">
+            <ButtonComponent
+                    button={new Button(Icon.solid("chevron-left").color("white"), ()=>{currentPage -= 1;refreshItems()})}/>
+            <span>
 					<DebouncedNumber value={currentPage + 1} max={Math.ceil(data.count/data.pageSize)}
-                                     on:change={(e)=>{currentPage=e.detail.value;refreshItems(e.detail.value)}}/>
+                                     on:change={(e)=>{currentPage=e.detail.value; refreshItems()}}/>
 					/ {Math.ceil(data.count / list.pageSize)}
-				</span>
-                <ButtonComponent
-                        button={new Button(Icon.solid("chevron-right").color("white"), ()=>{currentPage += 1})}/>
-                <span>{data.count} items</span>
-            </div>
-        </footer>
-    </main>
-{/await}
+            </span>
+            <ButtonComponent
+                    button={new Button(Icon.solid("chevron-right").color("white"), ()=>{currentPage += 1; refreshItems()})}/>
+            <span>{data.count} items</span>
+        </div>
+    </footer>
+</main>
 
 <style lang="scss">
   @import "../lib/app";

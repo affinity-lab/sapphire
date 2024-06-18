@@ -14,6 +14,6 @@ export function awqrdFileEndpoint(apiUrl: string, apiKey: string, client: string
         };
         if (extraHeaders) headers = {...headers, ...extraHeaders(event)};
 
-        return await fetch(`${apiUrl}/${name}/${id}/${file}`, {headers});
+        return await fetch(`${apiUrl}/${name}.${id}/${file}`, {headers});
     };
 }

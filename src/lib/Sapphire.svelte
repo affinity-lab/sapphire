@@ -1,3 +1,5 @@
+
+
 <script lang="ts">
 	import "@fontsource-variable/baloo-chettan-2";
 	import SC_Header from "./header/SC_Header.svelte";
