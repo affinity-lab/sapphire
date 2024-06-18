@@ -42,7 +42,6 @@ export * from "./list/card-list.svelte.js";
 export * from "./list/list-handler.svelte.js";
 export * from "./list/types.js";
 
-export * from "./form-page/controls/content-editor/components/blocks/blocks.js";
 
 export * from "./common-ui/icon.js";
 export * from "./common-ui/button/button.svelte.js";

@@ -55,7 +55,7 @@
                 {/each}
             </div>
 
-            <input list={name} onChange={(e) => controlOnChange(e, options)} oninput={onInput}>
+            <input list={name} onchange={(e) => controlOnChange(e, options)} oninput={onInput}>
             <datalist id={name}>
                 {#each Object.entries(options) as [key, value]}
                     <option>{value}</option>

@@ -1,5 +1,5 @@
 import {Icon} from "../../common-ui/icon.js";
-import type {OptionApi, Options} from "$lib/form-page/controls/controls.js";
+import type {ControlOptions, ControlWithApiOptions, OptionApi, Options} from "$lib/form-page/controls/controls.js";
 import type {ErrorArray} from "../types.js";
 
 
@@ -38,7 +38,7 @@ export abstract class AbstractControl {
     //     this.errors = tmp.filter(x => typeof x === "string")
     // }
 
-    constructor(public field: string, public label: string) {
+    constructor(public field: string, public label: string, public options?: ControlOptions) {
     }
 }
 
@@ -46,8 +46,8 @@ export abstract class AbstractControl {
 export abstract class AbstractControlWithOptions extends AbstractControl {
     dataFormat?: "string" | "array" | "object";
 
-    constructor(field: string, label: string, public options: Options | OptionApi) {
-        super(field, label)
+    constructor(field: string, label: string, public options: ControlWithApiOptions) {
+        super(field, label);
     }
 
     getSaveOptions (input: Record<string, string>) {
@@ -59,8 +59,8 @@ export abstract class AbstractControlWithOptions extends AbstractControl {
     async getOptionsRecord () {
         let options: Options;
 
-        if (Array.isArray(this.options) || (typeof this.options === 'object') || (typeof this.options === "string")) options = this.options;
-        else options = await this.options();
+        if (Array.isArray(this.options.api) || (typeof this.options.api === 'object') || (typeof this.options.api === "string")) options = this.options.api;
+        else options = await this.options.api();
 
         this.dataFormat = this.getType(options);
         return this.convertToRecord(options);

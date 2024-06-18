@@ -4,7 +4,7 @@
     import {LangMarkdown} from "$lib/form-page/controls/lang-markdown/lang-markdown.js";
     import type {FormEventHandler} from "svelte/elements";
 
-    let {control, item, onChange}: { control: LangMarkdown, item: any, onChange: FormEventHandler<HTMLTextAreaElement> } = $props();
+    let {control, item = $bindable(), onChange}: { control: LangMarkdown, item: any, onChange: FormEventHandler<HTMLTextAreaElement> } = $props();
     let field = $state(control.field);
 
     let selectedLang: string = $state("HU" || null);
@@ -41,6 +41,7 @@
 <style lang="scss">
   //@import "../../../../node_modules/@affinity-lab/sapphire/dist/form-page/controls/inputs-style";
   //@import "../../../../node_modules/@affinity-lab/sapphire/dist/lib/app";
+  @import "../inputs-style.scss";
   .markdown {
     display: grid;
     gap: 8px;

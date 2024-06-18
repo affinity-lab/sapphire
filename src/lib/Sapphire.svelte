@@ -1,7 +1,6 @@
 
 
 <script lang="ts">
-    import "@fontsource-variable/baloo-chettan-2";
     import SC_Header from "./header/SC_Header.svelte";
     import SC_Menu from "./menu/SC_Menu.svelte";
     import SC_Tabs from "./page/SC_PageTabs.svelte";

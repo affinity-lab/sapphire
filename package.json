@@ -40,7 +40,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-        "@fontsource-variable/baloo-chettan-2": "^5.0.20",
+		"@fontsource-variable/baloo-chettan-2": "^5.0.20",
 		"@types/file-size": "^1.0.3",
 		"@types/uuid": "^9.0.8",
 		"bulma": "^1.0.0",

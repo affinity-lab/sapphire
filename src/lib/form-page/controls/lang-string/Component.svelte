@@ -3,7 +3,7 @@
     import Control from "../Control.svelte";
     import type {LangString} from "$lib/form-page/controls/lang-string/lang-string.js";
 
-    let {control, item, onChange}: { control: LangString, item: any, onChange: Function } = $props();
+    let {control, item = $bindable(), onChange}: { control: LangString, item: any, onChange: Function } = $props();
     let field = $state(control.field);
 
     let selectedLang: string = $state("HU");
@@ -35,7 +35,7 @@
 <style lang="scss">
   //@import "../../../../node_modules/@affinity-lab/sapphire/dist/form-page/controls/inputs-style";
   //@import "../../../../node_modules/@affinity-lab/sapphire/dist/lib/app";
-
+  @import "../inputs-style.scss";
   main {
     width: 100%;
     header {

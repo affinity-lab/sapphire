@@ -41,6 +41,7 @@ $menu--group-marker-color: rgba($color-white, .2);
 
 * { box-sizing: border-box;}
 
+@import "@fontsource-variable/baloo-chettan-2";
 *:not(.fa-classic, .fa-light, .fa-regular, .fa-solid, .fa-duotone, .fa-thin, .fa-brands, .fal, .far, .fas, .fat, .fab) {
 	font-family: "Baloo Chettan 2 Variable", sans-serif;
 }
