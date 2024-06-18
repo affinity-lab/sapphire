@@ -99,16 +99,16 @@
             <label>Columns</label>
             <div class="control field has-addons">
                 <input readonly type="text" class="input  is-small" bind:value={data.width}/>
-                <button class="button is-small" on:click={increaseCols}><i class="bi bi-plus"></i></button>
-                <button class="button is-small" on:click={decreaseCols}><i class="bi bi-dash"></i></button>
+                <button class="button is-small" onclick={increaseCols}><i class="bi bi-plus"></i></button>
+                <button class="button is-small" onclick={decreaseCols}><i class="bi bi-dash"></i></button>
             </div>
         </div>
         <div class="field">
             <label>Rows</label>
             <div class="control field has-addons">
                 <input readonly type="text" class="input is-small" bind:value={data.height}/>
-                <button class="button is-small" on:click={increaseRows}><i class="bi bi-plus"></i></button>
-                <button class="button is-small" on:click={decreaseRows}><i class="bi bi-dash"></i></button>
+                <button class="button is-small" onclick={increaseRows}><i class="bi bi-plus"></i></button>
+                <button class="button is-small" onclick={decreaseRows}><i class="bi bi-dash"></i></button>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
                     <textarea
                             class="p-1"
                             bind:value={cell.content}
-                            on:input={change}
+                            oninput={change}
                             use:initInput
                             use:autosize
                             on:focusout={()=>{activeCell={x: -1, y: -1}}}
@@ -135,21 +135,21 @@
                 {/if}
                 {#if cell.y + cell.height !== data.height}
                     <button class="button p-0 m-0 bottom has-background-grey-light"
-                            on:click={(e)=>{
+                            onclick={(e)=>{
                                 unite([cell.x,cell.y],[cell.x, cell.y + cell.height]);
                             }}
                     ></button>
                 {/if}
                 {#if cell.x + cell.width !== data.width}
                     <button class="button p-0 m-0 right has-background-grey-light"
-                            on:click={(e)=>{
+                            onclick={(e)=>{
                                 unite([cell.x,cell.y],[cell.x + cell.width, cell.y]);
                             }}
                     ></button>
                 {/if}
                 {#if cell.width !== 1 || cell.height !== 1}
                     <button class="button p-0 topright m-1"
-                            on:click={(e)=>{
+                            onclick={(e)=>{
                                 split(cell.x, cell.y);
                             }}
                     >

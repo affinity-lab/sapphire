@@ -1,5 +1,4 @@
 import {Icon} from "../../common-ui/icon.js";
-import type {SvelteComponent} from "svelte";
 import type {OptionApi, Options} from "$lib/form-page/controls/controls.js";
 import type {ErrorArray} from "../types.js";
 
@@ -10,7 +9,7 @@ export abstract class AbstractControl {
     icon: Icon = Icon.solid("keyboard");
     roles: string[] | undefined = undefined;
 
-    abstract get component(): typeof SvelteComponent;
+    abstract get component(): ConstructorOfATypedSvelteComponent;
 
     setRoles (roles: string | string[]) {
         if (typeof roles === "string") {

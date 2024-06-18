@@ -24,7 +24,7 @@
 <DefaultEditorComponent {pageHandler} {index} bind:visible bind:valid bind:change>
     <textarea class="textarea" on:dragstart={(e)=>e.stopImmediatePropagation()}
               bind:value={data.text}
-              on:input={change}
+              oninput={change}
     ></textarea>
 
     <svelte:fragment slot="closed-text">{data.text}</svelte:fragment>

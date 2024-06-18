@@ -1,20 +1,21 @@
 <script lang="ts">
     import {userStore} from "../../lib/user-store.svelte.js";
+    import type {AbstractControl} from "./abstract-control.svelte.js"
+    import type {Snippet} from "svelte";
 
-    const {control} = $props();
+    const {control, children}: {control: AbstractControl, children: Snippet} = $props();
 </script>
 
 {#if userStore.hasRole(control.roles)}
     <div class="container bulma"
          class:row={control.layout==="row"}
          class:column={control.layout==="column"}
-         class:force-row={control.layout==="forceRow"}
-    >
+         class:force-row={control.layout==="forceRow"}>
         <header title={control.label}>
             <label><i class="fa-fa {control.icon}" style="{control.icon.colorStyle}"></i> {control.label}</label>
         </header>
         <section>
-            <slot/>
+            {@render children()}
             <footer>
                 {#if control.errors.length}
                     {#each control.errors as error}
@@ -53,7 +54,6 @@
     border-top: 1px solid #fff2;
     flex-direction: column;
 
-
     header {
       padding: 4px 8px;
       display: flex;
@@ -75,8 +75,10 @@
     }
 
     section {
-      display: flex;
       padding: 0 8px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
     }
   }
 

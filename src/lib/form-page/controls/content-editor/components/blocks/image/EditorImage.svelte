@@ -2,8 +2,7 @@
 
     import DefaultEditorComponent
         from "$lib/form-page/controls/content-editor/components/blocks/DefaultEditorComponent.svelte";
-    import ImageComponent
-        from "$lib/form-page/controls/content-editor/components/blocks/image/ImageComponent.svelte";
+    import ImageComponent from "$lib/form-page/controls/content-editor/components/blocks/image/ImageComponent.svelte";
 
     let {data, config, index, pageHandler, visible, valid} = $props();
 

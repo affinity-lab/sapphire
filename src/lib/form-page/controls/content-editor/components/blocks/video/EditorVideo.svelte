@@ -56,7 +56,7 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <input class="input is-size-7" type="text" bind:value={url} on:input={enteredUrl}/>
+                <input class="input is-size-7" type="text" bind:value={url} oninput={enteredUrl}/>
             </div>
         </div>
     </div>
@@ -66,9 +66,9 @@
         </div>
         <div class="field-body has-addons">
             <div class="control field has-addons starttime-input">
-                <input class="input is-size-7" type="text" placeholder="Min" bind:value={startMin} on:input={enteredStart}/>
+                <input class="input is-size-7" type="text" placeholder="Min" bind:value={startMin} oninput={enteredStart}/>
                 <span class="mx-2">:</span>
-                <input class="input is-size-7" type="text" placeholder="Sec" bind:value={startSec} on:input={enteredStart}/>
+                <input class="input is-size-7" type="text" placeholder="Sec" bind:value={startSec} oninput={enteredStart}/>
             </div>
         </div>
     </div>

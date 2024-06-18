@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorRichText from "./EditorRichText.svelte";
 import RenderedRichText from "./RenderedRichText.svelte";
@@ -38,8 +37,8 @@ export default class RichText implements BlockConfigInterface<EditorData, Option
             secondary: "#555555"
         }
     };
-    readonly editor: typeof SvelteComponent = EditorRichText;
-    readonly renderer: typeof SvelteComponent = RenderedRichText;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorRichText;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedRichText;
     readonly messages: Record<string, string> = {
 
     }

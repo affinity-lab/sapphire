@@ -15,7 +15,7 @@
     <div class="field m-0">
         <label class="label is-small">User's Id:</label>
         <div class="control id-input">
-            <input class="input is-small" type="text" bind:value={data.id} on:input={change} />
+            <input class="input is-small" type="text" bind:value={data.id} oninput={change} />
         </div>
     </div>
 

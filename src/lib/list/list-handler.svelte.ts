@@ -17,7 +17,6 @@ export class ListHandler {
 			this.lists = [...this.lists, listItem];
 		}
 
-
 		this.currentList = listItem;
 	}
 }

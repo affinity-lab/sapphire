@@ -3,7 +3,7 @@
     import Control from "../Control.svelte";
     import type {TagsControl} from "./tags.js";
 
-    let {control, item, onChange}: { control: TagsControl, item: any, onChange: Function } = $props();
+    let {control, item = $bindable(), onChange}: { control: TagsControl, item: any, onChange: Function } = $props();
     let field = $state(control.field);
     let name = control.field + Math.random();
 
@@ -31,6 +31,11 @@
 
     let options: Record<string, any> = $state({});
     let refresh = async () => options = await control.getOptionsRecord();
+
+    function controlOnChange(e: Event, options: Record<string, any>){
+        select((e.target as HTMLInputElement).value, options);
+        (e.target as HTMLInputElement).value="";
+    }
 </script>
 
 
@@ -40,18 +45,15 @@
             <div class="selected-container">
                 {#each Object.keys(selected) as key}
                 <span>{selected[key]}
-                <i class="fa-solid fa-xmark" on:click={(e) => {
+                <!--    TODO-->
+                <i class="fa-solid fa-xmark" onclick={(e) => {
                     unselect(key);
                     e.preventDefault();
                 }}></i></span>
                 {/each}
             </div>
 
-            <input list={name} on:change={(e)=>{
-                select(e.target.value, options);
-                e.target.value="";
-            }}
-            >
+            <input list={name} onchange={(e)=>{controlOnChange(e, options)}}>
             <datalist id={name}>
                 {#each Object.entries(options) as [key, value]}
                     {#if !Object.keys(selected).includes(key)}

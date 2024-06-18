@@ -1,15 +1,12 @@
 <script lang="ts">
     import type {Button} from "./button.svelte.js";
     import {userStore} from "../../lib/user-store.svelte.js";
-    import {createEventDispatcher} from "svelte";
 
     const {button}: {button: Button} = $props();
-
-    let dispatch = createEventDispatcher();
 </script>
 
 {#if (!userStore.user) || userStore.hasRole(button.roles)}
-    <button on:click={(e)=>{button.onClick(e)}} style:width={button._width} title={button._tooltip ? button._tooltip : ""} on:hover={()=>{dispatch("hover")}}>
+    <button onclick={(e)=>{button.onClick(e)}} style:width={button._width} title={button._tooltip ? button._tooltip : ""}>
         <div>
             {#if button.icon}
                 <i class="icon fa-fa fa-fw {button.icon}" style="{button.icon?.colorStyle || ''}"></i>

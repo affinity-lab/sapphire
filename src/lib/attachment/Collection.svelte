@@ -4,10 +4,10 @@
     import {Button} from "../common-ui/button/button.svelte.js";
     import {Icon} from "../common-ui/icon.js";
     import fileSize from "file-size";
-    import type {Collection, Attachment} from "./types";
-    import {AttachmentDetailsPopup} from "./attachment-details-popup";
+    import type {Attachment, AttachmentApiInterface, Collection} from "./types.js";
+    import {AttachmentDetailsPopup} from "./attachment-details-popup.js";
 
-    let {collection, api, loadData, label} = $props();
+    const {collection, api, loadData, label}: {collection: Collection, api: AttachmentApiInterface, loadData: Function, label: string} = $props();
 
     let ext = collection.rules.ext;
     if (typeof ext === "string") {
@@ -22,14 +22,13 @@
                 file: file,
                 metaFields: collection.publicMetaFields,
             },
-            (metadata, newName) => {
+            (metadata: any, newName: string) => {
                 api.saveMetaData(collection.name, file.name, metadata, newName)
             },
             ()=>loadData()
             )
     }
 </script>
-
 
 <section>
     <h2>{label} <i>({collection.items.length}/{collection.rules.limit})</i></h2>
@@ -39,7 +38,7 @@
                 <label class="file-input">
                     <i class="fa-fa fa-plus"></i>
 
-                    <input type="file" name="images" multiple bind:files accept={ext ? (ext.join(", ")) : "*/*"} on:change={()=>{
+                    <input type="file" name="images" multiple bind:files accept={ext ? (ext.join(", ")) : "*/*"} onchange={()=>{
                         api.upload(collection.name, files).then(() => {
                         loadData();
                     });}}>
@@ -53,7 +52,7 @@
             </div>
         {/if}
         {#each collection.items as file, index (file.id)}
-            <div class="file" on:click={()=>{popupHandler.open(filePopupFactory(file, collection))}}>
+            <div class="file" onclick={()=>{popupHandler.open(filePopupFactory(file, collection))}}>
                 <div class="file-image">
                     {#if file.isImage}
                         <img src={file.imageUrl(144, 81)} alt="index">
@@ -75,7 +74,7 @@
                     })}/>
                 </div>
                 <div class="overlay">
-                    <button on:click={(e) => {
+                    <button onclick={(e) => {
                         e.stopPropagation();
                         if (index > 0) {
                             api.reorder(collection.name, file.name, index - 1).then(()=> {
@@ -84,7 +83,7 @@
                         }
                     }}
                     ><i class="fa-solid fa-chevron-left"></i></button>
-                    <button on:click={(e) => {
+                    <button onclick={(e) => {
                         e.stopPropagation();
                         if (index < collection.items.length - 1) {
                             api.reorder(collection.name, file.name, index + 1).then(()=> {

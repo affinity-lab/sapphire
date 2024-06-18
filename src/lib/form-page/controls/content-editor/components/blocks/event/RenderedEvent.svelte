@@ -59,7 +59,7 @@
 
     <h1 class="title is-size-4 big">{data.name}</h1>
     <div class="calendar is-flex">
-        <button class="button" on:click={saveToCalendar}>
+        <button class="button" onclick={saveToCalendar}>
             <i class="bi bi-calendar"></i>
         </button>
         <h2 class="subtitle is-size-6">

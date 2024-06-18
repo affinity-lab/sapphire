@@ -1,25 +1,25 @@
 <script lang="ts">
 
-    import type {Popup} from "../../popup/popup.svelte.js";
     import SC_Popup from "../../popup/SC_Popup.svelte";
     import ButtonComponent from "../button/ButtonComponent.svelte";
+    import {ConfirmPopup} from "./proceed.svelte.js";
 
-    const {popup}: {popup: Popup} = $props()
+    const {popup}: {popup: ConfirmPopup} = $props()
 </script>
 
 
-<SC_Popup {popup}>
+{#snippet footer()}
+    {#each popup.buttons as button}
+        <ButtonComponent {button} />
+    {/each}
+{/snippet}
+
+<SC_Popup {popup} {footer}>
     <div>
         {popup.text}
     </div>
-
-
-    <svelte:fragment slot="footer">
-        {#each popup.buttons as button}
-            <ButtonComponent {button} />
-        {/each}
-    </svelte:fragment>
 </SC_Popup>
+
 
 <style lang="scss">
     div {

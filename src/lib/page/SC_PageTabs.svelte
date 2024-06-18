@@ -1,11 +1,11 @@
 <script lang="ts">
-	import pageHandler from "./page-handler.svelte.js";
-	import {Icon} from "../common-ui/icon.js";
+    import pageHandler from "./page-handler.svelte.js";
+    import {Icon} from "../common-ui/icon.js";
 </script>
 
 <main>
 	{#each pageHandler.pages as page (page.id)}
-		<article on:click={()=>{pageHandler.open(page)}} class:active={pageHandler.activePage === page}>
+		<article onclick={()=>{pageHandler.open(page)}} class:active={pageHandler.activePage === page}>
 			<i class="fa-fw {page.icon}" style="{page.icon.colorStyle}"></i>
 			<span title={page.label}>
 				{#if (page.changed)}
@@ -14,8 +14,8 @@
 				{page.label}
 			</span>
 			<button
-				on:click={(e) => {!page.changed || confirm("Are you sure?") ? pageHandler.close(page) : false; e.stopPropagation()}}>
-				<i class={Icon.solid("xmark")}></i>
+				onclick={(e) => {!page.changed || confirm("Are you sure?") ? pageHandler.close(page) : false; e.stopPropagation()}}>
+				<i class={Icon.solid("xmark").toString()}></i>
 			</button>
 		</article>
 	{/each}

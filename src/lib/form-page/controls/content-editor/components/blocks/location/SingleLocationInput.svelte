@@ -16,7 +16,7 @@
             {/if}
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <input class="input is-size-7" type="text" placeholder="Label" bind:value={label} on:input={change}/>
+                <input class="input is-size-7" type="text" placeholder="Label" bind:value={label} oninput={change}/>
             </div>
         </div>
     </div>
@@ -26,8 +26,8 @@
             {/if}
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <input class="input is-size-7" type="text" placeholder="Long" bind:value={long} on:input={change}/>
-                <input class="input is-size-7" type="text" placeholder="Lat" bind:value={lat} on:input={change}/>
+                <input class="input is-size-7" type="text" placeholder="Long" bind:value={long} oninput={change}/>
+                <input class="input is-size-7" type="text" placeholder="Lat" bind:value={lat} oninput={change}/>
             </div>
         </div>
     </div>

@@ -1,8 +1,9 @@
 <script lang="ts">
     import {CheckboxControl} from "./checkbox.js";
-   import Control from "../Control.svelte"
+    import Control from "../Control.svelte"
+    import type {ChangeEventHandler} from "svelte/elements";
 
-    let {control, item, onChange}: { control: CheckboxControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: CheckboxControl, item: any, onChange: ChangeEventHandler<any> } = $props()
     let field = control.field;
     let name = control.field + Math.random();
 </script>
@@ -16,7 +17,7 @@
                         bind:group={item[field]}
                         value={key}
                         name={name}
-                        on:change={onChange}
+                        onchange={onChange}
                 />
                 <label>{value}</label>
             </div>

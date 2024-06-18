@@ -1,4 +1,3 @@
-import type {SvelteComponent} from "svelte";
 import {Icon} from "../common-ui/icon.js";
 
 
@@ -6,7 +5,7 @@ export abstract class Page {
 	static pageId: string;
 	public label = $state("");
 	public icon = $state(Icon.light("question"));
-	abstract get component(): typeof SvelteComponent;
+	abstract get component(): ConstructorOfATypedSvelteComponent;
 	public changed: boolean = $state(false);
 	public fixedHeight: boolean = false;
 

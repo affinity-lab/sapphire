@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type {BlockConfigInterfaceWithConversion} from "../block-config-interface";
 import EditorTemplate from "./EditorTemplate.svelte";
 import RenderedTemplate from "./RenderedTemplate.svelte";
@@ -25,8 +24,8 @@ export default class Template implements BlockConfigInterfaceWithConversion<Edit
     readonly data: EditorData = {
         text: ""
     };
-    readonly editor: typeof SvelteComponent = EditorTemplate;
-    readonly renderer: typeof SvelteComponent = RenderedTemplate;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorTemplate;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedTemplate;
     readonly messages: Record<string, string> = {
         example_error: "This is an error message from config.valid! Text must be exactly 10 characters."
     }

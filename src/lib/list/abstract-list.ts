@@ -1,10 +1,9 @@
-import type {SvelteComponent} from "svelte";
 import type {Button} from "../common-ui/button/button.svelte.js";
 import type {Icon} from "$lib/common-ui/icon.js";
 
 export abstract class AbstractList {
-    abstract get component(): typeof SvelteComponent;
     id: number = Math.random();
+    abstract get component(): ConstructorOfATypedSvelteComponent;
 
     buttons: Button[] = [];
 

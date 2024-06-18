@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorEvent from "./EditorEvent.svelte";
 import RenderedEvent from "./RenderedEvent.svelte";
@@ -47,8 +46,8 @@ export default class Event implements BlockConfigInterface<EditorData, Options> 
         subEvents: []
     };
 
-    readonly editor: typeof SvelteComponent = EditorEvent;
-    readonly renderer: typeof SvelteComponent = RenderedEvent;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorEvent;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedEvent;
     readonly messages: Record<string, string> = {
         noDate: "A starting and an ending date must be specified for the main event!",
         noName: "Event must have a name!"

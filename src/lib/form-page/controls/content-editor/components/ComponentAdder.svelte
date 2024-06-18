@@ -23,7 +23,7 @@
             <ButtonComponent button={new Button(Icon.regular("plus").color("white"), () => {})} on:hover={()=>{}}/>
             <div>
                 {#each Object.entries(pageHandler.blocks) as [key, value]}
-                    <div on:click={()=>{pageHandler.add(key, {insertIndex: index})}}>
+                    <div onclick={()=>{pageHandler.add(key, {insertIndex: index})}}>
                         <i class="{value.icon}"></i>
                         {value.label}
                     </div>

@@ -1,4 +1,5 @@
 import {Icon} from "../common-ui/icon.js";
+import type {MouseEventHandler} from "svelte/elements";
 
 export class MenuItem {
 	label: string = "untitled";
@@ -33,6 +34,11 @@ export class MenuItem {
 		this.roles = typeof args[2] === "string" ? [args[2]] : args[2];
 	}
 
+	get actionFn (): MouseEventHandler<HTMLAnchorElement> {
+		if (this.onclick) return this.onclick;
+		else return this.open.bind(this);
+	}
+
 	open() {
 		this.opened = !this.opened;
 	}
@@ -41,6 +47,5 @@ export class MenuItem {
 
 type MenuView = {
 	label: string,
-	icon?: Icon,
-	color?: string,
+	icon?: Icon
 }

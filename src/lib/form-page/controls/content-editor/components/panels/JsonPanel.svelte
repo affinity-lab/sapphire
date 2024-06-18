@@ -6,7 +6,7 @@
 </script>
 
 <div class="json m-0">
-            <pre title="Copy" on:click={()=>{
+            <pre title="Copy" onclick={()=>{
                 copy(JSON.stringify(pageHandler.cleanData));
                 toastHandler.addToast("success",'JSON copied to clipboard')
             }}>{JSON.stringify(pageHandler.cleanData, null, 2)}</pre>

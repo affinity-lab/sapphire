@@ -25,7 +25,7 @@
 </script>
 
 
-<main on:click={()=>{popupHandler.open(popup)}}>
+<main onclick={()=>{popupHandler.open(popup)}}>
     <PreviewRender {blocks} content={value}/>
 </main>
 

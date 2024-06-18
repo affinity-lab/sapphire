@@ -1,15 +1,15 @@
 import {AbstractControl} from "$lib/form-page/controls/abstract-control.svelte.js";
 import Component from "$lib/form-page/controls/link/Component.svelte";
-import type {SvelteComponent} from "svelte";
+import type {MaybePromise} from "@sveltejs/kit";
 
 export type Link = {
     label: string,
     onClick: (itemField: any) => void
 }
-export type LinkGetter = (itemField: any) => Link | Link[]
+export type LinkGetter = (itemField: any) => MaybePromise<Link | Link[]>
 
 export class LinkControl extends AbstractControl {
-    component: typeof SvelteComponent = Component
+    component: ConstructorOfATypedSvelteComponent = Component
     links: Link[] = $state([]);
 
     constructor(field: string, label: string, public _links: Link | Link[] | LinkGetter) {

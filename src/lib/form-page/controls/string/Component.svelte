@@ -1,15 +1,15 @@
 <script lang="ts">
     import {StringControl} from "./string.js";
-   import Control from "../Control.svelte"
+    import Control from "../Control.svelte"
+    import type {FormEventHandler} from "svelte/elements";
 
-    let {control, item, onChange}: {control: StringControl, item: any, onChange: Function} = $props()
+    let {control, item = $bindable(), onChange}: {control: StringControl, item: any, onChange: FormEventHandler<any>} = $props()
     let field = control.field;
-
 
 </script>
 
 <Control {control}>
-    <input type="text" bind:value={item[field]} on:input={onChange}/>
+    <input type="text" bind:value={item[field]} oninput={onChange}/>
 </Control>
 
 

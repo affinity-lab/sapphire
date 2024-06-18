@@ -1,6 +1,5 @@
 <script lang="ts">
     import toastHandler from "./toast-handler.svelte";
-
 </script>
 
 <div class="toasts">

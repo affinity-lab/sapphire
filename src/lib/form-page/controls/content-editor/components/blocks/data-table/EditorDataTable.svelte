@@ -40,16 +40,16 @@
             <label>Columns</label>
             <div class="control field has-addons">
                 <input readonly type="text" class="input  is-small" value={cols}/>
-                <button class="button is-small" on:click={increaseCols}><i class="bi bi-plus"></i></button>
-                <button class="button is-small" on:click={decreaseCols}><i class="bi bi-dash"></i></button>
+                <button class="button is-small" onclick={increaseCols}><i class="bi bi-plus"></i></button>
+                <button class="button is-small" onclick={decreaseCols}><i class="bi bi-dash"></i></button>
             </div>
         </div>
         <div class="field">
             <label>Rows</label>
             <div class="control field has-addons">
                 <input readonly type="text" class="input is-small" value={rows}/>
-                <button class="button is-small" on:click={increaseRows}><i class="bi bi-plus"></i></button>
-                <button class="button is-small" on:click={decreaseRows}><i class="bi bi-dash"></i></button>
+                <button class="button is-small" onclick={increaseRows}><i class="bi bi-plus"></i></button>
+                <button class="button is-small" onclick={decreaseRows}><i class="bi bi-dash"></i></button>
             </div>
         </div>
     </div>
@@ -105,7 +105,7 @@
                                    class="input is-small is-fullwidth"
                                    use:initInput
                                    bind:value={data.rows[i][j]}
-                                   on:input={change}
+                                   oninput={change}
                                    on:focusout={()=>{activeCell = [-1,-1]}}
                             />
                         {:else}

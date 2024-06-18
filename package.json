@@ -13,6 +13,7 @@
 	},
 	"files": [
 		"dist",
+		"src",
 		"src/scss",
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
@@ -28,7 +29,7 @@
 		"marked": "^12.0.0",
 		"publint": "^0.1.9",
 		"sass": "^1.71.1",
-		"svelte": "^5.0.0-next.1",
+		"svelte": "^5.0.0-next.71",
 		"svelte-autosize": "^1.1.0",
 		"svelte-check": "^3.6.0",
 		"tslib": "^2.4.1",
@@ -39,7 +40,8 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@fontsource-variable/baloo-chettan-2": "^5.0.20",
+        "@fontsource-variable/baloo-chettan-2": "^5.0.20",
+		"@types/file-size": "^1.0.3",
 		"@types/uuid": "^9.0.8",
 		"bulma": "^1.0.0",
 		"fast-glob": "^3.3.2",

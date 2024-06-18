@@ -3,7 +3,7 @@
     import {ChooseSwitchControl} from "./choose-switch.js";
     import Control from "../Control.svelte"
 
-    let {control, item, onChange}: { control: ChooseSwitchControl, item: any, onChange: Function } = $props()
+    let {control, item = $bindable(), onChange}: { control: ChooseSwitchControl, item: any, onChange: Function } = $props()
     let field = $state(control.field);
     let variable = $state(false);
     let name = control.field + Math.random();
@@ -14,7 +14,7 @@
     {#await control.getOptionsRecord() then options}
         <section>
             <label class:bold={variable}>{Object.values(options)[0]}</label>
-            <div class="switch-background" class:darken={!variable} on:click={() => {
+            <div class="switch-background" class:darken={!variable} onclick={() => {
                 variable = !variable;
                 item[field] = variable ? Object.keys(options)[1] : Object.keys(options)[0];
             }}>

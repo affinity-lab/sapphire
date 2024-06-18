@@ -1,11 +1,11 @@
 <script lang="ts">
-	import {Icon} from "$lib/common-ui/icon.js";
+    import {Icon} from "$lib/common-ui/icon.js";
 
-	let {card}: { card: any } = $props();
+    let {card}: { card: any } = $props();
 </script>
 
 
-<main on:click={()=>{card.onclick ? card.onclick() : undefined}} class:active={card.active}>
+<main onclick={()=>{card.onclick ? card.onclick() : undefined}} class:active={card.active}>
 	{#if card.header.img}
 		<img src="{card.header.img}?{Math.random()}">
 	{/if}
@@ -44,9 +44,9 @@
 	{/if}
 
 	{#if card.footer}
-		<div class="footer" on:click={(e) => e.stopPropagation()}>
+		<div class="footer" onclick={(e) => e.stopPropagation()}>
 			{#each card.footer as button}
-				<button class="{button.icon}" on:click={() => button.onclick()}></button>
+				<button class="{button.icon}" onclick={() => button.onclick()}></button>
 			{/each}
 		</div>
 	{/if}

@@ -1,11 +1,10 @@
 <script lang="ts">
     import {flip} from 'svelte/animate'
     // import {dndzone} from "svelte-dnd-action";
-    import { v4 as uuidv4 } from 'uuid';
+    import {v4 as uuidv4} from 'uuid';
     import DefaultEditorComponent
         from "$lib/form-page/controls/content-editor/components/blocks/DefaultEditorComponent.svelte";
-    import ImageComponent
-        from "$lib/form-page/controls/content-editor/components/blocks/image/ImageComponent.svelte";
+    import ImageComponent from "$lib/form-page/controls/content-editor/components/blocks/image/ImageComponent.svelte";
 
 
     let {data, config, index, pageHandler, visible, valid} = $props();
@@ -34,7 +33,7 @@
         <div class="field-body">
             <div class="field">
                 <div class="control">
-                    <input class="input is-small" type="text" bind:value={data.title} on:input={change}/>
+                    <input class="input is-small" type="text" bind:value={data.title} oninput={change}/>
                 </div>
             </div>
         </div>
@@ -48,13 +47,13 @@
         {#each data.images as img, index (img.id)}
             <div class="image-item-container" animate:flip={{duration:300}}>
                 <ImageComponent data={img} {change} short={true}/>
-                <button class="button is-small is-outlined delete-button is-fullwidth" on:click={()=>{data.images.splice(index, 1);change()}}>
+                <button class="button is-small is-outlined delete-button is-fullwidth" onclick={()=>{data.images.splice(index, 1);change()}}>
                     <i class="bi bi-trash"></i>
                 </button>
             </div>
         {/each}
     </div>
-    <button class="button is-small is-outlined my-2" on:click={addImage}>
+    <button class="button is-small is-outlined my-2" onclick={addImage}>
         <i class="bi bi-plus"></i>
     </button>
 

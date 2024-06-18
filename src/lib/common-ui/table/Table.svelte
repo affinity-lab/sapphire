@@ -32,9 +32,9 @@
     {#each data as row}
         <tr>
             {#each row as data, index}
-                <td on:click={() => {clickOnRow(row, index)}} title={tooltip(index)}>
+                <td onclick={() => {clickOnRow(row, index)}} title={tooltip(index)}>
                     {#if data instanceof Icon}
-                        <i class="{data}" style="{data.colorStyle}"></i>
+                        <i class="{data.toString()}" style="{data.colorStyle}"></i>
                     {:else if data instanceof Button}
                         <ButtonComponent button={data} />
                     {:else}

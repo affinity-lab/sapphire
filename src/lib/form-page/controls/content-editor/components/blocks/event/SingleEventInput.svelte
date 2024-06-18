@@ -2,7 +2,7 @@
     import {createEventDispatcher} from "svelte";
     import autosize from "svelte-autosize";
     import {flip} from 'svelte/animate';
-    import { v4 as uuidv4 } from 'uuid';
+    import {v4 as uuidv4} from 'uuid';
     import SingleLocationInput
         from "$lib/form-page/controls/content-editor/components/blocks/location/SingleLocationInput.svelte";
     import SingleEventInput
@@ -58,7 +58,7 @@
         {/if}
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <input class="input is-size-7" type="text" placeholder="Name" bind:value={name} on:input={change}/>
+                <input class="input is-size-7" type="text" placeholder="Name" bind:value={name} oninput={change}/>
             </div>
         </div>
     </div>
@@ -70,7 +70,7 @@
         {/if}
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <textarea class="textarea is-small" placeholder="Description" bind:value={description} on:input={change} use:autosize></textarea>
+                <textarea class="textarea is-small" placeholder="Description" bind:value={description} oninput={change} use:autosize></textarea>
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
             {/if}
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <input class="input is-size-7" type="datetime-local" bind:value={startTime} on:input={change}/>
+                <input class="input is-size-7" type="datetime-local" bind:value={startTime} oninput={change}/>
             </div>
         </div>
     </div>
@@ -94,7 +94,7 @@
             {/if}
         <div class="field-body has-addons">
             <div class="control field has-addons">
-                <input class="input is-size-7" type="datetime-local" bind:value={endTime} on:input={change}/>
+                <input class="input is-size-7" type="datetime-local" bind:value={endTime} oninput={change}/>
             </div>
         </div>
     </div>
@@ -105,7 +105,7 @@
             </div>
             <div class="field-body has-addons">
                 <div class="control field has-addons">
-                    <input class="input is-size-7" type="text" placeholder="Enter URL" bind:value={url} on:input={change} />
+                    <input class="input is-size-7" type="text" placeholder="Enter URL" bind:value={url} oninput={change} />
                 </div>
             </div>
         </div>
@@ -142,7 +142,7 @@
                                           on:change={change}
                         />
                         <div class="options">
-                            <button class="button is-small is-fullwidth" on:click={()=>{deleteSubEvent(index)}}>
+                            <button class="button is-small is-fullwidth" onclick={()=>{deleteSubEvent(index)}}>
                                 <i class="bi bi-trash"></i>
                             </button>
                         </div>
@@ -151,7 +151,7 @@
                 {/each}
             </div>
             <div class="button-container is-flex is-align-items-center">
-                <button class="button adder last ml-2 has-background-grey-darker has-text-white" on:click={()=>addSubEvent(subEvents.length)}><i class="bi bi-plus"></i></button>
+                <button class="button adder last ml-2 has-background-grey-darker has-text-white" onclick={()=>addSubEvent(subEvents.length)}><i class="bi bi-plus"></i></button>
             </div>
         </div>
     {/if}

@@ -7,7 +7,7 @@ export class Button {
     public _tooltip: string | undefined;
     public _meta: any;
 
-    private isActive: (item: any) => boolean = () => true;
+    public isActive: (item: any) => boolean = () => true;
 
     constructor(label: string | Icon | {label: string, icon: Icon}, public onClick: Function, public roles?: string | string[]) {
         if (typeof label === "string") {

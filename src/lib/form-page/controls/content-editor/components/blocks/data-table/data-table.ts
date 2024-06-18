@@ -1,4 +1,3 @@
-import type {SvelteComponent} from 'svelte';
 import type BlockConfigInterface from "../block-config-interface";
 import EditorDataTable from "./EditorDataTable.svelte";
 import RenderedDataTable from "./RenderedDataTable.svelte";
@@ -30,8 +29,8 @@ export default class DataTable implements BlockConfigInterface<EditorData, Optio
         summaryCol: false,
         rows: [["", ""], ["", ""]]
     };
-    readonly editor: typeof SvelteComponent = EditorDataTable;
-    readonly renderer: typeof SvelteComponent = RenderedDataTable;
+    readonly editor: ConstructorOfATypedSvelteComponent = EditorDataTable;
+    readonly renderer: ConstructorOfATypedSvelteComponent = RenderedDataTable;
     readonly messages: Record<string, string> = {
 
     }

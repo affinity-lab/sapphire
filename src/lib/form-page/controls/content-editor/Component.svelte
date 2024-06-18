@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
     import Control from "$lib/form-page/controls/Control.svelte";
-    import ContentEditor from "$lib/form-page/controls/content-editor/components/ContentEditor.svelte";
     import {onMount} from "svelte";
+    import { ContentEditor} from "$lib/form-page/controls/content-editor/content-editor.js";
 
-    let {control, item, onChange} = $props();
+    let {control, item = $bindable(), onChange}: {control: ContentEditor, item: any, onChange: Function}= $props();
     let field = control.field;
 
-    let files;
+    let files: any = $state();
     let loaded = $state(false);
 
     async function loadData () {
@@ -21,10 +21,11 @@
 
 <Control {control}>
     {#if loaded}
+        <!--TODO: Argument of type typeof ContentEditor is not assignable to parameter of type ConstructorOfATypedSvelteComponent-->
         <ContentEditor blocks={control.blocks}
                        value={item[field]}
                        files={files}
-                       on:save={(e) => {item[field] = e.detail.content}}
+                       onsave={(e) => {item[field] = e.detail.content}}
         />
     {/if}
 </Control>

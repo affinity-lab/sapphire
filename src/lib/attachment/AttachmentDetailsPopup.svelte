@@ -5,7 +5,7 @@
     import {Icon} from "../common-ui/icon.js";
     import fileSize from "file-size";
     import {copy} from "../lib/clipboard.js";
-    import {AttachmentDetailsPopup} from "./attachment-details-popup";
+    import {AttachmentDetailsPopup} from "./attachment-details-popup.js";
 
     const {popup}: { popup: AttachmentDetailsPopup } = $props();
     let name = popup.data.file.name;
@@ -14,7 +14,22 @@
 </script>
 
 
-<SC_Popup {popup}>
+{#snippet footer()}
+    <ButtonComponent button={new Button({label: "Save", icon:Icon.solid("floppy-disk").color("white")}, async () => {
+            await popup.changeMeta(data.metadata, name)
+        })}
+    />
+    <ButtonComponent button={new Button({label:"Download", icon: Icon.solid("download").color("white")}, async () => {
+            const a = document.createElement("a")
+            a.href = data.file.downloadUrl;
+            a.target = "_blank"
+            a.click()
+        })}
+    />
+{/snippet}
+
+
+<SC_Popup {popup} {footer}>
     <div class="wrapper">
         {#if data.file.isImage}
             <img src={data.file.imageUrl(320,180)} alt="index">
@@ -45,17 +60,6 @@
             </div>
         </div>
     </div>
-    <svelte:fragment slot="footer">
-        <ButtonComponent button={new Button({label: "Save", icon:Icon.solid("floppy-disk").color("white")}, async () => {
-            await popup.changeMeta(data.metadata, name)
-        })}/>
-        <ButtonComponent button={new Button({label:"Download", icon: Icon.solid("download").color("white")}, async () => {
-            const a = document.createElement("a")
-            a.href = data.file.downloadUrl;
-            a.target = "_blank"
-            a.click()
-        })}/>
-    </svelte:fragment>
 </SC_Popup>
 
 <style lang="scss">
