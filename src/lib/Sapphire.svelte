@@ -31,7 +31,7 @@
 		<div class="menu">
 			<SC_Menu {menu}/>
 		</div>
-		{#if listHandler.lists.length}
+		{#if listHandler.lists.length && listHandler.shown}
 			<div class="list">
 				<SC_Lists/>
 			</div>

@@ -15,6 +15,14 @@
             <label><i class="fa-fa {control.icon}" style="{control.icon.colorStyle}"></i> {control.label}</label>
         </header>
         <section>
+            {#if control.options?.disclaimer}
+                <div>
+                    {control.options.disclaimer}
+                </div>
+            {/if}
+            <div>
+
+            </div>
             {@render children()}
             <footer>
                 {#if control.errors.length}

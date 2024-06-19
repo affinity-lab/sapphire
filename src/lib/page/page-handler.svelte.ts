@@ -20,6 +20,10 @@ export class PageHandler {
 		}
 	}
 	closeAll() {this.pages = [];}
+
+	swapPages (from: number, to: number) {
+		[this.pages[from], this.pages[to]] = [this.pages[to], this.pages[from]];
+	}
 }
 
 export const pageHandler = new PageHandler();

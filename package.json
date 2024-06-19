@@ -1,6 +1,6 @@
 {
 	"name": "@affinity-lab/sapphire",
-	"version": "0.1.32",
+	"version": "0.2.1",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -42,11 +42,15 @@
 	"dependencies": {
 		"@fontsource-variable/baloo-chettan-2": "^5.0.20",
 		"@types/file-size": "^1.0.3",
+		"@types/randomcolor": "^0.5.9",
+		"@types/sortablejs": "^1.15.8",
 		"@types/uuid": "^9.0.8",
 		"bulma": "^1.0.0",
 		"fast-glob": "^3.3.2",
 		"file-size": "^1.0.0",
 		"ics": "^3.7.6",
+		"randomcolor": "^0.6.2",
+		"sortablejs": "^1.15.2",
 		"uuid": "^9.0.1"
 	}
 }

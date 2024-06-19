@@ -7,6 +7,7 @@
     import {Button} from "../common-ui/button/button.svelte.js";
     import {CardList} from "./card-list.svelte";
     import {onMount} from "svelte";
+    import {listHandler} from "./list-handler.svelte.js";
 
     const {list}: { list: CardList } = $props();
 
@@ -50,12 +51,14 @@
     <header>
         <div class="wrapper">
             <div class="header-top-row">
+                <ButtonComponent button={new Button(Icon.solid("xmark").color("red"), ()=>{listHandler.closeList()})}/>
                 <div class="text-with-icon">
                     {#if list.icon}
                         <i class="{list.icon.toString()}" style="{list.icon.colorStyle}"></i>
                     {/if}
                     <span>{list.name}</span>
                 </div>
+
                 <div class="button-container">
                     {#each list.buttons as button}
                         <ButtonComponent {button}/>
@@ -68,14 +71,12 @@
                         bind:value={quickSearch}
                         placeholder="Search"
                         icon={Icon.solid("magnifying-glass")}
-                        onchange={()=>{
-                                refreshItems();
-                            }}
+                        onchange={()=>{refreshItems();}}
                 />
             {/if}
             {#if list.orderTypes}
                 <div class="header-row">
-                    <select bind:value={order}>
+                    <select bind:value={order} onchange={()=>refreshItems()}>
                         {#each Object.entries(list.orderTypes) as [value, label], index}
                             <option value={value}>{label}</option>
                         {/each}
@@ -106,14 +107,14 @@
     <footer>
         <div class="wrapper">
             <ButtonComponent
-                    button={new Button(Icon.solid("chevron-left").color("white"), ()=>{currentPage -= 1})}/>
+                    button={new Button(Icon.solid("chevron-left").color("white"), ()=>{currentPage -= 1; refreshItems()})}/>
             <span>
 					<DebouncedNumber value={currentPage + 1} max={Math.ceil(data.count/data.pageSize)}
-                                     onchange={(e)=>{currentPage=e.detail.value;refreshItems()}}/>
+                                     onchange={(e)=>{currentPage=e.detail.value; refreshItems()}}/>
 					/ {Math.ceil(data.count / list.pageSize)}
 				</span>
             <ButtonComponent
-                    button={new Button(Icon.solid("chevron-right").color("white"), ()=>{currentPage += 1})}/>
+                    button={new Button(Icon.solid("chevron-right").color("white"), ()=>{currentPage += 1; refreshItems()})}/>
             <span>{data.count} items</span>
         </div>
     </footer>

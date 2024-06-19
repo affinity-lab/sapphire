@@ -39,6 +39,7 @@ export abstract class AbstractControl {
     // }
 
     constructor(public field: string, public label: string, public options?: ControlOptions) {
+        if (this.options?.icon) this.icon = this.options.icon;
     }
 }
 

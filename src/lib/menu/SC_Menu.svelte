@@ -13,7 +13,9 @@
 					<a onclick={menuItem.actionFn}
 						class:has-sub-items={menuItem.subItems}>
 						<i class="icon fa-fw {menuItem.icon}" style="{menuItem.icon.colorStyle}"></i>
-						<span>{menuItem.label}</span>
+						{#if !closed}
+							<span>{menuItem.label}</span>
+						{/if}
 						{#if menuItem.subItems}
 							<i class="open-close fa-light" class:fa-plus={!menuItem.opened} class:fa-minus={menuItem.opened}></i>
 						{/if}

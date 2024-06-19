@@ -1,9 +1,16 @@
 <script lang="ts">
     import pageHandler from "./page-handler.svelte.js";
     import {Icon} from "../common-ui/icon.js";
+	import {onMount} from "svelte";
+	import Sortable from "sortablejs";
+
+	let main: HTMLElement;
+	onMount(()=> {
+		new Sortable(main, {});
+	})
 </script>
 
-<main>
+<main bind:this={main}>
 	{#each pageHandler.pages as page (page.id)}
 		<article onclick={()=>{pageHandler.open(page)}} class:active={pageHandler.activePage === page}>
 			<i class="fa-fw {page.icon}" style="{page.icon.colorStyle}"></i>

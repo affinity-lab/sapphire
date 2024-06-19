@@ -1,4 +1,9 @@
+import randomColor from "randomcolor";
+
 export class Icon {
+	public colorStyle = `color:${randomColor()}`;
+
+
 	static sharp() {
 		return {
 			solid(icon: string) {return new Icon("solid", icon, true);},
@@ -27,13 +32,9 @@ export class Icon {
 		return (this.sharp ? "fa-sharp " : "") + "fa-" + this.family +" "+ icon;
 	}
 
-	public colorStyle = "";
 	color(color?: string) {
-		if (color === undefined) {
-			this.colorStyle = "";
-		} else {
-			this.colorStyle = `color:${color};`;
-		}
+		if (!color) this.colorStyle = "";
+		else this.colorStyle = `color:${color};`;
 		return this;
 	}
 }
